@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_home.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/activity_sign_up.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_perfil.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_perfil.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_post.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_post.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/activity_sign_in.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_settings.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/activity_main.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/activity_splash_screen.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/activity_splash_screen.xml"
+    }
+]
