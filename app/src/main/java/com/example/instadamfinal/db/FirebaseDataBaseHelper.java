@@ -2,12 +2,21 @@ package com.example.instadamfinal.db;
 
 import static androidx.fragment.app.FragmentManager.TAG;
 
-import android.annotation.SuppressLint;
-import android.util.Log;
+import static com.example.instadamfinal.activities.MainActivity.emailUsuarioStatic;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.fragment.app.FragmentManager;
+
+import com.example.instadamfinal.listeners.UsuarioListener;
 import com.example.instadamfinal.models.Publicacion;
 import com.example.instadamfinal.models.Usuario;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
@@ -15,6 +24,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class FirebaseDataBaseHelper {
+
+
     @SuppressLint("RestrictedApi")
     public void crearNuevoUsuarioFirebaseHelper(String nombreUsuario, String emailUsuario){
         //Aqui crear una clase independiente para utilizar todo de firebase.
@@ -45,13 +56,19 @@ public class FirebaseDataBaseHelper {
                 .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
     }
 
+    @SuppressLint("RestrictedApi")
+    public void cargarDatosUsuarioFirebaseHelper( Context context , UsuarioListener usuarioListener){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + emailUsuarioStatic);
 
-
-    public interface MyCallback {
-        void onCallback(Usuario usuario);
-    }
-
-    public void cargarDatosUsuarioFirebaseHelper(){
-
+        usuariosDBRef.get().addOnSuccessListener(documentSnapshot -> {
+            // Ocultar Toast cuando los datos se hayan descargado(no funciona emulador)
+            if (documentSnapshot.exists()) {
+                Toast.makeText(context, "Datos cargados", Toast.LENGTH_SHORT).show();
+                Usuario usuario = documentSnapshot.toObject(Usuario.class);
+                usuarioListener.onUsuarioListener(usuario);
+            }else
+                Log.e(FragmentManager.TAG, "El documento no existe");
+        });
     }
 }

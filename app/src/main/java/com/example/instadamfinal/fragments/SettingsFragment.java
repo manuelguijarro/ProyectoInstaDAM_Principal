@@ -31,6 +31,8 @@ import com.example.instadamfinal.controllers.EmailController;
 import com.example.instadamfinal.controllers.FireStorageController;
 import com.example.instadamfinal.controllers.PasswordController;
 import com.example.instadamfinal.db.DataBaseHelper;
+import com.example.instadamfinal.db.FirebaseDataBaseHelper;
+import com.example.instadamfinal.listeners.UsuarioListener;
 import com.example.instadamfinal.models.Usuario;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -72,10 +74,8 @@ public class SettingsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        // Mostrar Toast de carga(no funciona correctamente en emulador)
         Toast.makeText(getContext(), "Cargando datos...", Toast.LENGTH_SHORT).show();
 
-        //Primero cargamos la base de datos de firebase y luego cargamos todo lo demas.
 
         cargarDatosUsuarioFirebase(view);
 
@@ -191,32 +191,27 @@ public class SettingsFragment extends Fragment {
         else
             mostrarMensajeAlerta("No puede haber ningun campo vacío,rellena todos los campos.");
     }
+
+
+
     private void mostrarMensajeAlerta(String mensaje) {
         textViewMensajeAlerta.setText(mensaje);
     }
+
+
+
     @SuppressLint("RestrictedApi")
     private void cargarDatosUsuarioFirebase(View view) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + emailUsuarioStatic);
-
-        usuariosDBRef.get().addOnSuccessListener(documentSnapshot -> {
-            // Ocultar Toast cuando los datos se hayan descargado(no funciona emulador)
-            Toast.makeText(getContext(), "Datos cargados", Toast.LENGTH_SHORT).show();
-
-            if (documentSnapshot.exists()) {
-                Usuario usuario = documentSnapshot.toObject(Usuario.class);
-                // Verifica si el objeto Usuario es null
-                if (usuario != null) {
-                    // Usa el objeto Usuario aquí
-                    //Realizamos desde aqui los metodos porque nos aseguramso que el usuario se a cargado de la base de datos
-                    usuarioLogeado = usuario;
-                    cargarImagenActualPerfil(view);
-                    cargarDatosActualPerfil();
-                } else
-                    Log.e(FragmentManager.TAG, "El objeto Usuario es null");
-
+        FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
+        firebaseDataBaseHelper.cargarDatosUsuarioFirebaseHelper( getContext(), usuario -> {
+            if (usuario != null) {
+                // Usa el objeto Usuario aquí
+                //Realizamos desde aqui los metodos porque nos aseguramso que el usuario se a cargado de la base de datos
+                usuarioLogeado = usuario;
+                cargarImagenActualPerfil(view);
+                cargarDatosActualPerfil();
             } else
-                Log.e(FragmentManager.TAG, "El documento no existe");
+                Log.e(FragmentManager.TAG, "El objeto Usuario es null");
         });
     }
 
