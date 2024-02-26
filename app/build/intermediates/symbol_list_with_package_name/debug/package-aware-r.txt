@@ -3396,6 +3396,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView2
 id imageViewPerfilUsuario
 id imageViewSubirImagenActualizar
 id immediateStop
@@ -3851,6 +3852,7 @@ layout fragment_home
 layout fragment_perfil
 layout fragment_post
 layout fragment_settings
+layout imagen_item
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

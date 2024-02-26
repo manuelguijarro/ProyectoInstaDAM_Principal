@@ -30,12 +30,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean comprobarEmailPasswordUsuarioDB(String emailUsuario, String passwordUsuario) {
-        //Aqui ciframos la contraseña, para compararla con la cifrada previamente
-        String passwordUsuarioCifrada =  PasswordController.get_SHA_512_SecurePassword(passwordUsuario,"ambgk");
+    public String comprobarEmailPasswordUsuarioDB(String emailUsuario, String passwordUsuario) {
+        String idUnico = "";
+
+        String passwordUsuarioCifrada = PasswordController.get_SHA_512_SecurePassword(passwordUsuario, "ambgk");
         Cursor cursor = this.getReadableDatabase().query(
                 StructureDB.PERSONAL_DATA_TABLE,
-                new String[]{StructureDB.COLUMN_USERNAME, StructureDB.COLUMN_EMAIL, StructureDB.COLUMN_PASS},
+                new String[]{StructureDB.COLUMN_USERNAME, StructureDB.COLUMN_EMAIL, StructureDB.COLUMN_PASS, StructureDB.COLUMN_IDUNICO},
                 StructureDB.COLUMN_EMAIL + " = ? AND " + StructureDB.COLUMN_PASS + " = ?",
                 new String[]{emailUsuario, passwordUsuarioCifrada},
                 null,
@@ -43,12 +44,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 StructureDB.COLUMN_EMAIL + " DESC"
         );
 
-
-        int resultadoCantidadUsuario = cursor.getCount();
+        if (cursor.moveToFirst()) {
+            // Se encontró un usuario con el correo electrónico y la contraseña proporcionados
+            idUnico = cursor.getString(cursor.getColumnIndexOrThrow(StructureDB.COLUMN_IDUNICO));
+        }
 
         cursor.close();
 
-        return  resultadoCantidadUsuario > 0;
+        return idUnico;
 
     }
 
@@ -71,7 +74,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean crearNuevoUsuarioHelper(String nombreUsuario, String emailUsuario, String passwordUsuario){
+    public boolean crearNuevoUsuarioHelper(String idUnico,String nombreUsuario, String emailUsuario, String passwordUsuario){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -80,6 +83,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(StructureDB.COLUMN_USERNAME,nombreUsuario);
         values.put(StructureDB.COLUMN_EMAIL,emailUsuario);
         values.put(StructureDB.COLUMN_PASS,passwordUsuarioCifrada);
+        values.put(StructureDB.COLUMN_IDUNICO,idUnico);
         long numID = db.insert(StructureDB.PERSONAL_DATA_TABLE,null,values);
         return numID != -1;
     }

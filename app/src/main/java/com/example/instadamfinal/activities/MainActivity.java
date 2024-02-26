@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
     public static int idUsuario = 1;
-    public static String emailUsuarioStatic;
+    public static String idUnicoStatic;
 
 
     @SuppressLint("RestrictedApi")
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        String emailUsuario = intent.getStringExtra("key");
-        emailUsuarioStatic = emailUsuario;
+        String idUnico = intent.getStringExtra("key");
+        idUnicoStatic = idUnico;
 
 
         //FirebaseApp.initializeApp(this);

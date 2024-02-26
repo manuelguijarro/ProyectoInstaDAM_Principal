@@ -3395,6 +3395,7 @@ int id ignore 0x7f0800e6
 int id ignoreRequest 0x7f0800e7
 int id image 0x7f0800e8
 int id imageView 0x7f0800e9
+int id imageView2 0x7f080225
 int id imageViewPerfilUsuario 0x7f0800ea
 int id imageViewSubirImagenActualizar 0x7f0800eb
 int id immediateStop 0x7f0800ec
@@ -3850,6 +3851,7 @@ int layout fragment_home 0x7f0b0030
 int layout fragment_perfil 0x7f0b0031
 int layout fragment_post 0x7f0b0032
 int layout fragment_settings 0x7f0b0033
+int layout imagen_item 0x7f0b0071
 int layout m3_alert_dialog 0x7f0b0034
 int layout m3_alert_dialog_actions 0x7f0b0035
 int layout m3_alert_dialog_title 0x7f0b0036

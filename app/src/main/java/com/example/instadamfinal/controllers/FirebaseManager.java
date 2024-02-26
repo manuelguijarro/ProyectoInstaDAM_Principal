@@ -32,26 +32,7 @@ public class FirebaseManager {
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://instadam-76807.appspot.com");
         StorageReference storageRef = storage.getReference().child("imagenes").child(imageName);
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
 
-        UploadTask uploadTask = storageRef.putBytes(data);
-        uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                //Log.d(TAG, "Upload is " + progress + "% done");
-                Toast.makeText(context, "Upload is " + progress + "% done", Toast.LENGTH_SHORT).show();
-
-            }
-        }).addOnFailureListener(exception -> {
-            Log.e(TAG, "uploadImage: Failed to upload image", exception);
-            listener.onFailure();
-        }).addOnSuccessListener(taskSnapshot -> {
-            Log.d(TAG, "uploadImage: Image uploaded successfully");
-            listener.onSuccess();
-        });
     }
     public interface OnImagesDownloadListener {
         void onImagesDownloaded(List<Bitmap> bitmaps);

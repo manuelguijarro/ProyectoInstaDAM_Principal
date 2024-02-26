@@ -2,16 +2,16 @@ package com.example.instadamfinal.db;
 
 import static androidx.fragment.app.FragmentManager.TAG;
 
-import static com.example.instadamfinal.activities.MainActivity.emailUsuarioStatic;
+import static com.example.instadamfinal.activities.MainActivity.idUnicoStatic;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
 
+import com.example.instadamfinal.listeners.UsuarioActualizadoListener;
 import com.example.instadamfinal.listeners.UsuarioListener;
 import com.example.instadamfinal.models.Publicacion;
 import com.example.instadamfinal.models.Usuario;
@@ -27,7 +27,7 @@ public class FirebaseDataBaseHelper {
 
 
     @SuppressLint("RestrictedApi")
-    public void crearNuevoUsuarioFirebaseHelper(String nombreUsuario, String emailUsuario){
+    public void crearNuevoUsuarioFirebaseHelper(String uniqueID,String nombreUsuario, String emailUsuario){
         //Aqui crear una clase independiente para utilizar todo de firebase.
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         //Publicaciones iniciales/ejemplos
@@ -41,7 +41,8 @@ public class FirebaseDataBaseHelper {
                 .Es la manera optima y mas recomendada para subir los datos que ofrece firebase.
                 NO RECOMIENDA EL USO DE SET Y MAPS
                  */
-        Usuario usuarioModelo = new Usuario(nombreUsuario,emailUsuario,"default_user.jpg",
+
+        Usuario usuarioModelo = new Usuario(uniqueID,nombreUsuario,emailUsuario,"default_user.jpg",
                 new Timestamp(new Date()),publicaciones);
 
                 /*
@@ -50,7 +51,7 @@ public class FirebaseDataBaseHelper {
                 las publicaciones.
 
                  */
-        db.collection("usuarios_db").document("usuario_"+emailUsuario)
+        db.collection("usuarios_db").document("usuario_"+uniqueID)
                 .set(usuarioModelo)
                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully written!"))
                 .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
@@ -59,7 +60,7 @@ public class FirebaseDataBaseHelper {
     @SuppressLint("RestrictedApi")
     public void cargarDatosUsuarioFirebaseHelper( Context context , UsuarioListener usuarioListener){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + emailUsuarioStatic);
+        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + idUnicoStatic);
 
         usuariosDBRef.get().addOnSuccessListener(documentSnapshot -> {
             // Ocultar Toast cuando los datos se hayan descargado(no funciona emulador)
@@ -70,5 +71,17 @@ public class FirebaseDataBaseHelper {
             }else
                 Log.e(FragmentManager.TAG, "El documento no existe");
         });
+    }
+
+    public void actualizarDatosUsuarioFirebaseHelper(Context context, String nombreUsuario, String emailUsuario,
+                                                     String urlImagenPerfil, UsuarioActualizadoListener usuarioActualizadoListener){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + idUnicoStatic);
+
+        usuariosDBRef.update(
+                "email",emailUsuario,
+                "urlImagenPerfil",urlImagenPerfil,
+                "userName",nombreUsuario
+        ).addOnSuccessListener(unused -> usuarioActualizadoListener.usuarioActualizado());
     }
 }

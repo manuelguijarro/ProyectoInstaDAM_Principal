@@ -6,9 +6,11 @@ import android.content.Context;
 import com.example.instadamfinal.db.DataBaseHelper;
 import com.example.instadamfinal.db.FirebaseDataBaseHelper;
 
+import java.util.UUID;
+
 public class DBController {
 
-    public boolean logearUsuarioController(Context context, String emailUsuario, String passwordUsuario){
+    public String logearUsuarioController(Context context, String emailUsuario, String passwordUsuario){
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper(context);
         return dataBaseHelper.comprobarEmailPasswordUsuarioDB(emailUsuario,passwordUsuario);
@@ -38,10 +40,11 @@ public class DBController {
     private boolean crearNuevoUsuarioDB(Context context, String nombreUsuario, String emailUsuario, String passwordUsuario) {
 
         try{
+            String idUnico = UUID.randomUUID().toString();
             DataBaseHelper dataBaseHelper = new DataBaseHelper(context);
-            boolean resultado = dataBaseHelper.crearNuevoUsuarioHelper(nombreUsuario,emailUsuario,passwordUsuario);
+            boolean resultado = dataBaseHelper.crearNuevoUsuarioHelper(idUnico,nombreUsuario,emailUsuario,passwordUsuario);
             if (resultado){
-                crearNuevoUsuarioFirebaseDB(nombreUsuario,emailUsuario);
+                crearNuevoUsuarioFirebaseDB(idUnico,nombreUsuario,emailUsuario);
             }
             return resultado;
 
@@ -49,8 +52,8 @@ public class DBController {
             return false;
         }
     }
-    private void crearNuevoUsuarioFirebaseDB(String nombreUsuario, String emailUsuario){
+    private void crearNuevoUsuarioFirebaseDB(String idUnico, String nombreUsuario, String emailUsuario){
         FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
-        firebaseDataBaseHelper.crearNuevoUsuarioFirebaseHelper(nombreUsuario,emailUsuario);
+        firebaseDataBaseHelper.crearNuevoUsuarioFirebaseHelper(idUnico,nombreUsuario,emailUsuario);
     }
 }

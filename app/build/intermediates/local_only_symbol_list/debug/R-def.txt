@@ -24,6 +24,7 @@ id editTextTextPassword2
 id editTextUserName
 id fragmentContainerView
 id imageView
+id imageView2
 id imageViewPerfilUsuario
 id imageViewSubirImagenActualizar
 id logoInstaDam
@@ -62,6 +63,7 @@ layout fragment_home
 layout fragment_perfil
 layout fragment_post
 layout fragment_settings
+layout imagen_item
 menu bottom_menu
 mipmap ic_launcher
 mipmap ic_launcher_round

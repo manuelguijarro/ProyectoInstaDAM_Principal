@@ -2,7 +2,7 @@ package com.example.instadamfinal.fragments;
 
 import static android.app.Activity.RESULT_OK;
 
-import static com.example.instadamfinal.activities.MainActivity.emailUsuarioStatic;
+import static com.example.instadamfinal.activities.MainActivity.idUnicoStatic;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -26,16 +26,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.instadamfinal.R;
-import com.example.instadamfinal.controllers.DBController;
 import com.example.instadamfinal.controllers.EmailController;
 import com.example.instadamfinal.controllers.FireStorageController;
 import com.example.instadamfinal.controllers.PasswordController;
 import com.example.instadamfinal.db.DataBaseHelper;
 import com.example.instadamfinal.db.FirebaseDataBaseHelper;
-import com.example.instadamfinal.listeners.UsuarioListener;
+import com.example.instadamfinal.listeners.SubirImagenUsuarioListener;
+import com.example.instadamfinal.listeners.UsuarioActualizadoListener;
 import com.example.instadamfinal.models.Usuario;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -45,6 +43,7 @@ public class SettingsFragment extends Fragment {
     private ImageView imageViewPerfilUsuario;
     private ImageView imageViewSubirImagenActualizarInput;
     private Bitmap imagenDescargadaPerfil;
+    private Bitmap imagenGaleriaBitmap;
     private TextView textViewNombreUsuario;
     private TextView textViewEmailUsuario;
     private TextView textViewMensajeAlerta;
@@ -55,6 +54,7 @@ public class SettingsFragment extends Fragment {
     private Button buttonActualizarDatosUsuario;
 
     private Usuario usuarioLogeado;
+    private Fragment fragment;
 
     private static final int SELECT_PHOTO = 100;
 
@@ -116,7 +116,7 @@ public class SettingsFragment extends Fragment {
         //Inputs
         editTextTextNombreUsuarioInput = view.findViewById(R.id.editTextTextNombreUsuario);
         editTextTextEmailUsuarioInput = view.findViewById(R.id.editTextTextEmailUsuario);
-        editTextTextPasswordInput = view.findViewById(R.id.editTextTextNombreUsuario);
+        editTextTextPasswordInput = view.findViewById(R.id.editTextTextPassword2);
         //Imagenes
         imageViewSubirImagenActualizarInput = view.findViewById(R.id.imageViewSubirImagenActualizar);
         //Botones
@@ -150,7 +150,7 @@ public class SettingsFragment extends Fragment {
                     InputStream imageStream = getActivity().getContentResolver().openInputStream(imagenGaleriaSeleccionada);
 
 
-                    Bitmap imagenGaleriaBitmap = BitmapFactory.decodeStream(imageStream);
+                    imagenGaleriaBitmap = BitmapFactory.decodeStream(imageStream);
 
                     imageViewSubirImagenActualizarInput.setImageBitmap(imagenGaleriaBitmap);
 
@@ -172,15 +172,36 @@ public class SettingsFragment extends Fragment {
                 //Ahora hemos verificado que los campos no estan vacios, y que el email y contraseña
                 //coinciden con los requisitos.
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(this.getContext());
-                boolean resultadoExisteEmail = dataBaseHelper.verificarExisteEmailUsuarioHelper(emailUsuario);
+                //boolean resultadoExisteEmail = dataBaseHelper.verificarExisteEmailUsuarioHelper(emailUsuario);
 
-                if (!resultadoExisteEmail){
+                if (/*!resultadoExisteEmail*/true){
                     //Actualizamos los datos de sqlite
 
                     //Actualizamos los datos de firebase.
+                    FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
+                    firebaseDataBaseHelper.actualizarDatosUsuarioFirebaseHelper(getContext(), nombreUsuario, emailUsuario,
+                            "imagen_perfil" + idUnicoStatic, new UsuarioActualizadoListener() {
+                                @Override
+                                public void usuarioActualizado() {
+                                    //pero antes subimos la imagen.
+                                    FireStorageController.subirImagen(getContext(), "imagen_perfil" + idUnicoStatic,
+                                            imagenGaleriaBitmap, new SubirImagenUsuarioListener() {
+                                                @Override
+                                                public void imagenSubida() {
+                                                    cargarDatosUsuarioFirebase(view);
+                                                }
+
+                                                @Override
+                                                public void imagenFalloSubida() {
+
+                                                }
+                                            });
+
+                                    //Ahora tendriamos que volver a cargar los datos del usuario.
+                                }
+                            });
 
 
-                    //actualizamos el usuario.
 
 
                 }else
@@ -191,9 +212,14 @@ public class SettingsFragment extends Fragment {
         else
             mostrarMensajeAlerta("No puede haber ningun campo vacío,rellena todos los campos.");
     }
-
-
-
+/*
+    private void loadFragment() {
+        fragment = new SettingsFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .commit();
+    }
+*/
     private void mostrarMensajeAlerta(String mensaje) {
         textViewMensajeAlerta.setText(mensaje);
     }
@@ -221,10 +247,10 @@ public class SettingsFragment extends Fragment {
             if (bitmap != null) {
                 // Aquí es donde debes establecer la imagen en el ImageView
                 imageViewPerfilUsuario = view.findViewById(R.id.imageViewPerfilUsuario);
-                imageViewPerfilUsuario.post(() -> {
+
                     imageViewPerfilUsuario.setImageBitmap(bitmap);
                     imageViewPerfilUsuario.setVisibility(View.VISIBLE);
-                });
+
             } else {
                 // Maneja el caso en que la descarga falla o no hay imagen
                 // Podrías mostrar una imagen predeterminada o hacer otra acción aquí

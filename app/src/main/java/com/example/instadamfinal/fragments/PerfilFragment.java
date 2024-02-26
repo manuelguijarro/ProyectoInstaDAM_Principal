@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.instadamfinal.R;
 import com.example.instadamfinal.activities.MainActivity;
+import com.example.instadamfinal.adapters.ImagenAdapter;
 import com.example.instadamfinal.controllers.FirebaseManager;
 import com.example.instadamfinal.models.Publicacion;
 import com.example.instadamfinal.models.Usuario;
@@ -47,7 +48,7 @@ public class PerfilFragment extends Fragment {
 
         // Crear una referencia a la colección "usuarios_db" en Firestore
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + MainActivity.emailUsuarioStatic);
+        DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + MainActivity.idUnicoStatic);
 
         // Obtener los datos del usuario de Firestore
         usuariosDBRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -65,9 +66,8 @@ public class PerfilFragment extends Fragment {
                         FirebaseManager.downloadImages(getContext(), imageUrls, new FirebaseManager.OnImagesDownloadListener() {
                             @Override
                             public void onImagesDownloaded(List<Bitmap> bitmaps) {
-                                // Configurar el adaptador con las imágenes descargadas
-                              //  ImageAdapter adapter = new ImageAdapter(getContext(), bitmaps);
-                               // recyclerView.setAdapter(adapter);
+                                ImagenAdapter imagenAdapter = new ImagenAdapter(bitmaps);
+                                recyclerView.setAdapter(imagenAdapter);
                             }
                         });
                     }

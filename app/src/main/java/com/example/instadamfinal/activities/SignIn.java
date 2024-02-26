@@ -61,11 +61,11 @@ public class SignIn extends AppCompatActivity {
 
     private void logearUsuario(String emailUsuario, String passwordUsuario) {
         DBController dbController = new DBController();
-        boolean existeUsuario = dbController.logearUsuarioController(this.getBaseContext(), emailUsuario, passwordUsuario);
+        String idUnico = dbController.logearUsuarioController(this.getBaseContext(), emailUsuario, passwordUsuario);
 
-        if (existeUsuario) {
+        if (!idUnico.isEmpty()) {
             mostrarMensajeAlerta("Bienvenido a InstaDAM " + emailUsuario);
-            cargarActivityMain(emailUsuario);
+            cargarActivityMain(idUnico);
         } else {
             mostrarMensajeAlerta("Error en inicio de sesion, registra un nuevo usuario o edita los inputs");
         }
@@ -83,10 +83,10 @@ public class SignIn extends AppCompatActivity {
         }, 1000);
     }
 
-    public void cargarActivityMain(String emailUsuario) {
+    public void cargarActivityMain(String idUnico) {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("key", emailUsuario);
+            intent.putExtra("key", idUnico);
             startActivity(intent);
             finish();
         }, 1000);
