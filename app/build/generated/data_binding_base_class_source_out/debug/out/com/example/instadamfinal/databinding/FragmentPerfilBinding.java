@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,15 +26,20 @@ public final class FragmentPerfilBinding implements ViewBinding {
   public final ImageView imageView;
 
   @NonNull
+  public final ProgressBar progressBar2;
+
+  @NonNull
   public final RecyclerView recyclerView;
 
   @NonNull
   public final TextView textViewNombreUsuarioPerfil;
 
   private FragmentPerfilBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imageView,
-      @NonNull RecyclerView recyclerView, @NonNull TextView textViewNombreUsuarioPerfil) {
+      @NonNull ProgressBar progressBar2, @NonNull RecyclerView recyclerView,
+      @NonNull TextView textViewNombreUsuarioPerfil) {
     this.rootView = rootView;
     this.imageView = imageView;
+    this.progressBar2 = progressBar2;
     this.recyclerView = recyclerView;
     this.textViewNombreUsuarioPerfil = textViewNombreUsuarioPerfil;
   }
@@ -71,6 +77,12 @@ public final class FragmentPerfilBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBar2;
+      ProgressBar progressBar2 = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar2 == null) {
+        break missingId;
+      }
+
       id = R.id.recyclerView;
       RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
       if (recyclerView == null) {
@@ -83,8 +95,8 @@ public final class FragmentPerfilBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentPerfilBinding((ConstraintLayout) rootView, imageView, recyclerView,
-          textViewNombreUsuarioPerfil);
+      return new FragmentPerfilBinding((ConstraintLayout) rootView, imageView, progressBar2,
+          recyclerView, textViewNombreUsuarioPerfil);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

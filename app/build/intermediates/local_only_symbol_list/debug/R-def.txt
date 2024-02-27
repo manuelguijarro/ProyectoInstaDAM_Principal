@@ -4,6 +4,7 @@ color black
 color primary
 color white
 dimen fab_margin
+drawable baseline_person_24
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable linear_top

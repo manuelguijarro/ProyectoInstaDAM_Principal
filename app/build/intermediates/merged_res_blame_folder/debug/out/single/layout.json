@@ -8,8 +8,8 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\imagen_item.xml"
     },
     {
-        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_perfil.xml",
-        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_perfil.xml"
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_post.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_post.xml"
     },
     {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\fragment_home.xml",
