@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment;
     public static int idUsuario = 1;
     public static String idUnicoStatic;
+    public static String urlImagenPostFragment;
 
 
     @SuppressLint("RestrictedApi")

@@ -33,7 +33,10 @@ public class SignUp extends AppCompatActivity {
         cargarRecursosVista();
         cargarEventosOnClickBotones();
     }
-
+    /**
+     * Funcion para cargar los recuros del xml a nuestros objetos de java, una vez cargados
+     * ya podemos empezar a utilizar los objetos.
+     */
     private void cargarRecursosVista() {
         //input
         editTextNombreUsuario = findViewById(R.id.editTextUserName);

@@ -8,8 +8,8 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\imagen_item.xml"
     },
     {
-        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_perfil.xml",
-        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_perfil.xml"
+        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/fragment_post.xml",
+        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_post.xml"
     },
     {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\fragment_home.xml",
@@ -20,20 +20,16 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_sign_up.xml"
     },
     {
-        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\fragment_perfil.xml",
-        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\fragment_perfil.xml"
-    },
-    {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\fragment_post.xml",
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\fragment_post.xml"
     },
     {
-        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\activity_sign_in.xml",
-        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_sign_in.xml"
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\fragment_perfil.xml",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\fragment_perfil.xml"
     },
     {
-        "merged": "com.example.instadamfinal.app-mergeDebugResources-46:/layout/imagen_item.xml",
-        "source": "com.example.instadamfinal.app-main-49:/layout/imagen_item.xml"
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\activity_sign_in.xml",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_sign_in.xml"
     },
     {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-mergeDebugResources-46:\\layout\\activity_main.xml",
