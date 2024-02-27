@@ -37,17 +37,28 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="347dp"
-        android:layout_height="429dp"
+        android:layout_width="412dp"
+        android:layout_height="432dp"
         android:clipToPadding="false"
-        android:padding="5dp"
+
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/imagen_item"
-        app:spanCount="3"
-        tools:itemCount="15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNombreUsuarioPerfil" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNombreUsuarioPerfil"
+
+        tools:listitem="@layout/imagen_item" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.569" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

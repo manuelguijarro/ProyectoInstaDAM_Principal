@@ -3264,8 +3264,8 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
-id buttonActualizarDatos
 id buttonPanel
+id buttonPublicarPublicacion
 id buttonSubirImagen
 id cache_measures
 id callMeasure
@@ -3343,8 +3343,9 @@ id edge
 id editTextEmailAddress
 id editTextPassword
 id editTextTextEmailUsuario
-id editTextTextNombreUsuario
+id editTextTextMultiLineDescripcionPublicacion
 id editTextTextPassword2
+id editTextTextTituloPublicacion
 id editTextUserName
 id edit_query
 id elastic
@@ -3398,7 +3399,7 @@ id image
 id imageView
 id imageView2
 id imageViewPerfilUsuario
-id imageViewSubirImagenActualizar
+id imageViewSubirImagenSubirPost
 id immediateStop
 id included
 id indeterminate
@@ -3543,6 +3544,8 @@ id pin
 id position
 id postLayout
 id pressed
+id progressBar
+id progressBar2
 id progress_circular
 id progress_horizontal
 id radio

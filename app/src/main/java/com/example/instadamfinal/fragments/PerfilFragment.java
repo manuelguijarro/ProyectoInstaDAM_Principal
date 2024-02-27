@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ import java.util.List;
 public class PerfilFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView textViewNombreUsuarioPerfilText;
+    private ProgressBar progressBarPerfil;
 
     public PerfilFragment() {
     }
@@ -42,6 +44,7 @@ public class PerfilFragment extends Fragment {
         // Obtener la referencia al RecyclerView en tu layout
         recyclerView = view.findViewById(R.id.recyclerView);
         textViewNombreUsuarioPerfilText = view.findViewById(R.id.textViewNombreUsuarioPerfil);
+        progressBarPerfil = view.findViewById(R.id.progressBar2);
         // Crear una instancia de GridLayoutManager con orientación horizontal
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
 
@@ -70,6 +73,7 @@ public class PerfilFragment extends Fragment {
                             @Override
                             public void onImagesDownloaded(List<Bitmap> bitmaps) {
                                 ImagenAdapter imagenAdapter = new ImagenAdapter(bitmaps);
+                                progressBarPerfil.setVisibility(View.GONE);
                                 recyclerView.setAdapter(imagenAdapter);
                             }
                         });

@@ -145,7 +145,7 @@
             tools:src="@tools:sample/avatars" />
 
         <ImageView
-            android:id="@+id/imageViewSubirImagenActualizar"
+            android:id="@+id/imageViewSubirImagenSubirPost"
             android:layout_width="93dp"
             android:layout_height="97dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +182,7 @@
             app:layout_constraintVertical_bias="0.804" />
 
         <Button
-            android:id="@+id/buttonActualizarDatos"
+            android:id="@+id/buttonPublicarPublicacion"
             android:layout_width="143dp"
             android:layout_height="33dp"
             android:text="Actualizar datos"
@@ -210,7 +210,7 @@
             app:layout_constraintVertical_bias="0.689" />
 
         <EditText
-            android:id="@+id/editTextTextNombreUsuario"
+            android:id="@+id/editTextTextTituloPublicacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"

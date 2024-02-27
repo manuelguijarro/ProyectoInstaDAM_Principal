@@ -3263,8 +3263,8 @@ int id bounce 0x7f080062
 int id bounceBoth 0x7f080063
 int id bounceEnd 0x7f080064
 int id bounceStart 0x7f080065
-int id buttonActualizarDatos 0x7f080066
 int id buttonPanel 0x7f080067
+int id buttonPublicarPublicacion 0x7f080226
 int id buttonSubirImagen 0x7f080068
 int id cache_measures 0x7f080069
 int id callMeasure 0x7f08006a
@@ -3342,8 +3342,9 @@ int id edge 0x7f0800b1
 int id editTextEmailAddress 0x7f0800b2
 int id editTextPassword 0x7f0800b3
 int id editTextTextEmailUsuario 0x7f0800b4
-int id editTextTextNombreUsuario 0x7f0800b5
+int id editTextTextMultiLineDescripcionPublicacion 0x7f080227
 int id editTextTextPassword2 0x7f0800b6
+int id editTextTextTituloPublicacion 0x7f080228
 int id editTextUserName 0x7f0800b7
 int id edit_query 0x7f0800b8
 int id elastic 0x7f0800b9
@@ -3397,7 +3398,7 @@ int id image 0x7f0800e8
 int id imageView 0x7f0800e9
 int id imageView2 0x7f080225
 int id imageViewPerfilUsuario 0x7f0800ea
-int id imageViewSubirImagenActualizar 0x7f0800eb
+int id imageViewSubirImagenSubirPost 0x7f080229
 int id immediateStop 0x7f0800ec
 int id included 0x7f0800ed
 int id indeterminate 0x7f0800ee
@@ -3542,6 +3543,8 @@ int id pin 0x7f080178
 int id position 0x7f080179
 int id postLayout 0x7f08017a
 int id pressed 0x7f08017b
+int id progressBar 0x7f08022a
+int id progressBar2 0x7f08022b
 int id progress_circular 0x7f08017c
 int id progress_horizontal 0x7f08017d
 int id radio 0x7f08017e

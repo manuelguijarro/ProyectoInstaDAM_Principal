@@ -4,25 +4,74 @@ package com.example.instadamfinal.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.example.instadamfinal.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class FragmentPostBinding implements ViewBinding {
   @NonNull
-  private final FrameLayout rootView;
+  private final ConstraintLayout rootView;
 
-  private FragmentPostBinding(@NonNull FrameLayout rootView) {
+  @NonNull
+  public final Button buttonPublicarPublicacion;
+
+  @NonNull
+  public final Button buttonSubirImagen;
+
+  @NonNull
+  public final EditText editTextTextMultiLineDescripcionPublicacion;
+
+  @NonNull
+  public final EditText editTextTextTituloPublicacion;
+
+  @NonNull
+  public final ImageView imageViewSubirImagenSubirPost;
+
+  @NonNull
+  public final ProgressBar progressBar;
+
+  @NonNull
+  public final TextView textView12;
+
+  @NonNull
+  public final TextView textView13;
+
+  @NonNull
+  public final TextView textViewMensajeAlertaSettings;
+
+  private FragmentPostBinding(@NonNull ConstraintLayout rootView,
+      @NonNull Button buttonPublicarPublicacion, @NonNull Button buttonSubirImagen,
+      @NonNull EditText editTextTextMultiLineDescripcionPublicacion,
+      @NonNull EditText editTextTextTituloPublicacion,
+      @NonNull ImageView imageViewSubirImagenSubirPost, @NonNull ProgressBar progressBar,
+      @NonNull TextView textView12, @NonNull TextView textView13,
+      @NonNull TextView textViewMensajeAlertaSettings) {
     this.rootView = rootView;
+    this.buttonPublicarPublicacion = buttonPublicarPublicacion;
+    this.buttonSubirImagen = buttonSubirImagen;
+    this.editTextTextMultiLineDescripcionPublicacion = editTextTextMultiLineDescripcionPublicacion;
+    this.editTextTextTituloPublicacion = editTextTextTituloPublicacion;
+    this.imageViewSubirImagenSubirPost = imageViewSubirImagenSubirPost;
+    this.progressBar = progressBar;
+    this.textView12 = textView12;
+    this.textView13 = textView13;
+    this.textViewMensajeAlertaSettings = textViewMensajeAlertaSettings;
   }
 
   @Override
   @NonNull
-  public FrameLayout getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +92,70 @@ public final class FragmentPostBinding implements ViewBinding {
 
   @NonNull
   public static FragmentPostBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.buttonPublicarPublicacion;
+      Button buttonPublicarPublicacion = ViewBindings.findChildViewById(rootView, id);
+      if (buttonPublicarPublicacion == null) {
+        break missingId;
+      }
 
-    return new FragmentPostBinding((FrameLayout) rootView);
+      id = R.id.buttonSubirImagen;
+      Button buttonSubirImagen = ViewBindings.findChildViewById(rootView, id);
+      if (buttonSubirImagen == null) {
+        break missingId;
+      }
+
+      id = R.id.editTextTextMultiLineDescripcionPublicacion;
+      EditText editTextTextMultiLineDescripcionPublicacion = ViewBindings.findChildViewById(rootView, id);
+      if (editTextTextMultiLineDescripcionPublicacion == null) {
+        break missingId;
+      }
+
+      id = R.id.editTextTextTituloPublicacion;
+      EditText editTextTextTituloPublicacion = ViewBindings.findChildViewById(rootView, id);
+      if (editTextTextTituloPublicacion == null) {
+        break missingId;
+      }
+
+      id = R.id.imageViewSubirImagenSubirPost;
+      ImageView imageViewSubirImagenSubirPost = ViewBindings.findChildViewById(rootView, id);
+      if (imageViewSubirImagenSubirPost == null) {
+        break missingId;
+      }
+
+      id = R.id.progressBar;
+      ProgressBar progressBar = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar == null) {
+        break missingId;
+      }
+
+      id = R.id.textView12;
+      TextView textView12 = ViewBindings.findChildViewById(rootView, id);
+      if (textView12 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView13;
+      TextView textView13 = ViewBindings.findChildViewById(rootView, id);
+      if (textView13 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewMensajeAlertaSettings;
+      TextView textViewMensajeAlertaSettings = ViewBindings.findChildViewById(rootView, id);
+      if (textViewMensajeAlertaSettings == null) {
+        break missingId;
+      }
+
+      return new FragmentPostBinding((ConstraintLayout) rootView, buttonPublicarPublicacion,
+          buttonSubirImagen, editTextTextMultiLineDescripcionPublicacion,
+          editTextTextTituloPublicacion, imageViewSubirImagenSubirPost, progressBar, textView12,
+          textView13, textViewMensajeAlertaSettings);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }
