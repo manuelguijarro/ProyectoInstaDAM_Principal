@@ -84,6 +84,10 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\linear_top.xml"
     },
     {
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_imagen_item.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\imagen_item.xml"
+    },
+    {
         "merged": "com.example.instadamfinal.app-merged_res-47:/layout_imagen_item.xml.flat",
         "source": "com.example.instadamfinal.app-main-49:/layout/imagen_item.xml"
     },

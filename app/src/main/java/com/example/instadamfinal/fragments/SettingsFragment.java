@@ -114,14 +114,14 @@ public class SettingsFragment extends Fragment {
         textViewEmailUsuario = view.findViewById(R.id.textViewEmailUsuario);
         textViewMensajeAlerta = view.findViewById(R.id.textViewMensajeAlertaSettings);
         //Inputs
-        editTextTextNombreUsuarioInput = view.findViewById(R.id.editTextTextNombreUsuario);
+        editTextTextNombreUsuarioInput = view.findViewById(R.id.editTextTextTituloPublicacion);
         editTextTextEmailUsuarioInput = view.findViewById(R.id.editTextTextEmailUsuario);
         editTextTextPasswordInput = view.findViewById(R.id.editTextTextPassword2);
         //Imagenes
-        imageViewSubirImagenActualizarInput = view.findViewById(R.id.imageViewSubirImagenActualizar);
+        imageViewSubirImagenActualizarInput = view.findViewById(R.id.imageViewSubirImagenSubirPost);
         //Botones
         buttonSubirImagenUsuario = view.findViewById(R.id.buttonSubirImagen);
-        buttonActualizarDatosUsuario = view.findViewById(R.id.buttonActualizarDatos);
+        buttonActualizarDatosUsuario = view.findViewById(R.id.buttonPublicarPublicacion);
     }
 
     private void cargarEventosOnClickBotones() {
