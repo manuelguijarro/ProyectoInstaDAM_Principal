@@ -18,9 +18,25 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
+/**
+ * Clase controladora que utilizamos para reutilizar los metodos que trabajan con
+ * nuestro backend de firestorage, con esta clase implementamos de manera
+ * asincrona la descarga/as de Imagenes y la subida de imagen.
+ */
+
 public class FireStorageController {
 
-
+    /**
+     * Metodo utiñizado para subir la imagen a el servidor de firestorage.
+     * @param context
+     * @param imagenNombre el nombre que tendra nuestra imagen en el endpoint del servidor
+     *              gs://instadam-76807.appspot.com/imagenes/nombreImagen
+     * @param imageBitmap La imagen en un mapa de Bit necesaria para subir a el servidor.
+     * @param subirImagenUsuarioListener Interfaz que necesitamos implementar para tratar de manera sincrona
+     *                                  la subida de imagen, con implementar la Interfaz, cuando se llama al metodo
+     *                                   addOnSuccessListener es cuando llamamos a los metodos(porque será cuando la imagen se a subido al 100%)
+     *                                   
+     */
     @SuppressLint("RestrictedApi")
     public static void subirImagen(Context context, String imagenNombre, Bitmap imageBitmap, SubirImagenUsuarioListener subirImagenUsuarioListener){
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://instadam-76807.appspot.com");

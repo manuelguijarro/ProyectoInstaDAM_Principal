@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         String idUnico = intent.getStringExtra("key");
         idUnicoStatic = idUnico;
 
-
-        //FirebaseApp.initializeApp(this);
         loadToolbar();
+        loadFragment();
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
        bottomNavigationView.setOnItemSelectedListener(this::cambioFragmento);

@@ -28,12 +28,7 @@ public class FirebaseManager {
 
     private static final String TAG = "FirebaseManager";
 
-    public static void uploadImage(Context context, Bitmap imageBitmap, String imageName, respuestaSubirImagenListener listener) {
-        FirebaseStorage storage = FirebaseStorage.getInstance("gs://instadam-76807.appspot.com");
-        StorageReference storageRef = storage.getReference().child("imagenes").child(imageName);
 
-
-    }
     public interface OnImagesDownloadListener {
         void onImagesDownloaded(List<Bitmap> bitmaps);
     }
