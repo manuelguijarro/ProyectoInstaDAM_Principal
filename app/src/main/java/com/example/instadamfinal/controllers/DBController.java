@@ -64,6 +64,16 @@ public class DBController {
 
         return resultadoExisteUsuario;
     }
+
+    /**
+     * Este metodo lo utilizamos para crear nuevo usuario en la base de datos, tanto en la base de datos sql_lite como
+     * en firebase, le seteamos un id unico para relacionarlos en las dos bases de datos cuando necesitemos actualizar
+     * datos...
+     * @param nombreUsuario el nombre de usuario necesario para crear un nuevo usuario en la DB.
+     * @param emailUsuario el email de usuario necesario para crear un nuevo usuario en la DB.
+     * @param passwordUsuario la password de usuario necesario para crear un nuevo usuario en la DB.
+     * @return devuelve el resultado booleano segun si el usuario se a creado o no.
+     */
     @SuppressLint("RestrictedApi")
     private boolean crearNuevoUsuarioDB(Context context, String nombreUsuario, String emailUsuario, String passwordUsuario) {
 
@@ -80,6 +90,14 @@ public class DBController {
             return false;
         }
     }
+
+    /**
+     * Esta es la funcion que utilizamos para conectar con nuestra clase que gestiona la base de datos firebase
+     * y se crea despues de crear primero en la base local el usuario.
+     * @param idUnico este idUnico sera para relacionar a nuestro usuario de sql_lite con firebase.
+     * @param nombreUsuario este nombre de usuario es para crear el usuario en la base de datos firebase.
+     * @param emailUsuario este email de usuario es para crear el usuario en la base de datos firebase.
+     */
     private void crearNuevoUsuarioFirebaseDB(String idUnico, String nombreUsuario, String emailUsuario){
         FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
         firebaseDataBaseHelper.crearNuevoUsuarioFirebaseHelper(idUnico,nombreUsuario,emailUsuario);

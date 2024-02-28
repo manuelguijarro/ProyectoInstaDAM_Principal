@@ -95,9 +95,17 @@ public class PostFragment extends Fragment {
 
         buttonPublicarPublicacionInput.setOnClickListener(v -> publicarPostUsuario());
     }
+
+
+    /**
+     * Funcion que utilizamos para recoger los datos del formulario para posteriormente proceder a subir la imagen al servidor de firestorage y una vez
+     * subida añadimos los datos de la nueva publicacion a nuestro usuario en firebase.
+     */
     private void publicarPostUsuario(){
         String tituloPublicacion = editTextTextTituloPublicacionInput.getText().toString();
         String descripcionPublicacion = editTextTextMultiLineDescripcionPublicacionInput.getText().toString();
+
+        //Con este if comprobamos que el usuario haya introducido todos los datos necesarios.
         if (imagenGaleriaBitmap !=  null && !tituloPublicacion.isEmpty() && !descripcionPublicacion.isEmpty()){
 
             urlImagenPostFragment = idUnicoStatic.replace("@","_")+tituloPublicacion;

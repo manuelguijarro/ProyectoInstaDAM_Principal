@@ -30,14 +30,11 @@ public class FireStorageController {
         byte[] data = baos.toByteArray();
 
         UploadTask uploadTask = storageRef.putBytes(data);
-        uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                //Log.d(TAG, "Upload is " + progress + "% done");
-                Toast.makeText(context, "Upload is " + progress + "% done", Toast.LENGTH_SHORT).show();
+        uploadTask.addOnProgressListener(taskSnapshot -> {
+            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+            //Log.d(TAG, "Upload is " + progress + "% done");
+            Toast.makeText(context, "Upload is " + progress + "% done", Toast.LENGTH_SHORT).show();
 
-            }
         }).addOnFailureListener(exception -> {
             Log.e(TAG, "uploadImage: Failed to upload image", exception);
             subirImagenUsuarioListener.imagenFalloSubida();
