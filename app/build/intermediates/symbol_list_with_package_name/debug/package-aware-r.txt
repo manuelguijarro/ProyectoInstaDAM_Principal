@@ -3548,6 +3548,7 @@ id pressed
 id progressBar
 id progressBar2
 id progressBar3
+id progressBar4
 id progress_circular
 id progress_horizontal
 id radio

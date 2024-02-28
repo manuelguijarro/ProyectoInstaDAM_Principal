@@ -60,20 +60,19 @@ public class PostFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_post, container, false);
+
         imagenGaleriaBitmap = null;
+
         cargarRecursosVista(view);
 
         cargarEventosOnClickBotones();
 
-
-
-
-
-
-
         return view;
     }
-
+    /**
+     * Funcion para cargar los recuros del xml a nuestros objetos de java, una vez cargados
+     * ya podemos empezar a utilizar los objetos.
+     */
     private void cargarRecursosVista(View view) {
         //input
         editTextTextTituloPublicacionInput = view.findViewById(R.id.editTextTextTituloPublicacion);
@@ -87,21 +86,24 @@ public class PostFragment extends Fragment {
         progressBarPost = view.findViewById(R.id.progressBar);
     }
 
-
-
-
+    /**
+     * Funcion para cargar los eventos de botones  para que el usuario pueda interactuar con ellos.
+     * tanto como para enviar seleccionar la imagen de la galeria como para publicar la publicacion a firebase y firestorage.
+     */
     private void cargarEventosOnClickBotones() {
         buttonSubirImagenPost.setOnClickListener(v -> seleccionarImagenDeGaleria());
 
-        buttonPublicarPublicacionInput.setOnClickListener(v -> {
-            String tituloPublicacion = editTextTextTituloPublicacionInput.getText().toString();
-            String descripcionPublicacion = editTextTextMultiLineDescripcionPublicacionInput.getText().toString();
-            if (imagenGaleriaBitmap !=  null && !tituloPublicacion.isEmpty() && !descripcionPublicacion.isEmpty()){
+        buttonPublicarPublicacionInput.setOnClickListener(v -> publicarPostUsuario());
+    }
+    private void publicarPostUsuario(){
+        String tituloPublicacion = editTextTextTituloPublicacionInput.getText().toString();
+        String descripcionPublicacion = editTextTextMultiLineDescripcionPublicacionInput.getText().toString();
+        if (imagenGaleriaBitmap !=  null && !tituloPublicacion.isEmpty() && !descripcionPublicacion.isEmpty()){
 
-                // Atomically add a new region to the "regions" array field.
-                urlImagenPostFragment = idUnicoStatic.replace("@","_")+tituloPublicacion;
-                progressBarPost.setVisibility(View.VISIBLE);
+            urlImagenPostFragment = idUnicoStatic.replace("@","_")+tituloPublicacion;
 
+            progressBarPost.setVisibility(View.VISIBLE);
+            try {
                 FireStorageController.subirImagen(getContext(), urlImagenPostFragment, imagenGaleriaBitmap, new SubirImagenUsuarioListener() {
                     @Override
                     public void imagenSubida() {
@@ -115,17 +117,10 @@ public class PostFragment extends Fragment {
 
                     }
                 });
-
-
-
-
+            }catch (Exception e){
+                e.printStackTrace();
             }
-            //Aqui subimos la imagen
-            //y actualizamos la lista de publicaciones del usuario
-
-
-
-        });
+        }
     }
     private void seleccionarImagenDeGaleria() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);

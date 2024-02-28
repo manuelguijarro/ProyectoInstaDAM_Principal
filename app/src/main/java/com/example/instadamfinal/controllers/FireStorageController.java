@@ -44,7 +44,11 @@ public class FireStorageController {
         }).addOnSuccessListener(taskSnapshot -> {
 
             Log.d(TAG, "uploadImage: Image uploaded successfully");
-            subirImagenUsuarioListener.imagenSubida();
+            try {
+                subirImagenUsuarioListener.imagenSubida();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 

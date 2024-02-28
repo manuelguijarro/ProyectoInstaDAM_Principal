@@ -57,6 +57,7 @@ public class SettingsFragment extends Fragment {
     private Usuario usuarioLogeado;
     private Fragment fragment;
     private ProgressBar progressBar;
+    private ProgressBar progressBar2;
     private static final int SELECT_PHOTO = 100;
 
     public SettingsFragment() {
@@ -76,8 +77,8 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         Toast.makeText(getContext(), "Cargando datos...", Toast.LENGTH_SHORT).show();
-
-
+        progressBar = view.findViewById(R.id.progressBar3);
+        progressBar2 = view.findViewById(R.id.progressBar4);
         cargarDatosUsuarioFirebase(view);
 
         cargarRecursosFragmento(view);
@@ -85,27 +86,6 @@ public class SettingsFragment extends Fragment {
         cargarEventosOnClickBotones();
 
 
-        //PRIMERO VAMOS A MEJORAR LA DESCARGA DE IMAGEN.
-        // Si el usuario hace click en el boton de enviar datos, entonces la foto
-        //se tendrá que subir al servidor y tambien tenerla alojada en una referencia
-        //en base de datos, para poder referenciar a la url.
-       /* botonEnviarForm.setOnClickListener(v -> {
-            if (imagenSubirActualizar != null) {
-                FirebaseManager.uploadImage(getContext(),imagenSubirActualizar, "imagen_archivo", new FirebaseManager.MyResponseListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(getContext(), "Imagen subida correctamente", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure() {
-                        Toast.makeText(getContext(), "Error al subir la imagen", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else {
-                Toast.makeText(getContext(), "No has seleccionado ninguna imagen", Toast.LENGTH_SHORT).show();
-            }
-        });*/
         return view;
     }
 
@@ -120,6 +100,7 @@ public class SettingsFragment extends Fragment {
         editTextTextPasswordInput = view.findViewById(R.id.editTextTextPassword2);
         //Imagenes
         imageViewSubirImagenActualizarInput = view.findViewById(R.id.imageViewSubirImagenSubirPost);
+        imageViewPerfilUsuario = view.findViewById(R.id.imageViewPerfilUsuario);
         //Botones
         buttonSubirImagenUsuario = view.findViewById(R.id.buttonSubirImagen);
         buttonActualizarDatosUsuario = view.findViewById(R.id.buttonPublicarPublicacion);
@@ -163,6 +144,8 @@ public class SettingsFragment extends Fragment {
         }
     }
     private void actualizarDatosUsuario(View view) {
+
+        progressBar2.setVisibility(View.VISIBLE);
         String nombreUsuario = editTextTextNombreUsuarioInput.getText().toString();
         String emailUsuario = editTextTextEmailUsuarioInput.getText().toString();
         String passwordUsuario = editTextTextPasswordInput.getText().toString();
@@ -187,9 +170,34 @@ public class SettingsFragment extends Fragment {
                                     //pero antes subimos la imagen.
                                     FireStorageController.subirImagen(getContext(), "imagen_perfil" + idUnicoStatic,
                                             imagenGaleriaBitmap, new SubirImagenUsuarioListener() {
+                                                @SuppressLint("RestrictedApi")
                                                 @Override
-                                                public void imagenSubida() {
-                                                    cargarDatosUsuarioFirebase(view);
+                                                public void imagenSubida() throws InterruptedException {
+                                                    Thread.sleep(3000);
+                                                    FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
+                                                    firebaseDataBaseHelper.cargarDatosUsuarioFirebaseHelper( getContext(), usuario -> {
+                                                        if (usuario != null) {
+                                                            // Usa el objeto Usuario aquí
+                                                            //Realizamos desde aqui los metodos porque nos aseguramso que el usuario se a cargado de la base de datos
+                                                            usuarioLogeado = usuario;
+
+                                                            FireStorageController.descargarImagen(getContext(), usuarioLogeado.getUrlImagenPerfil(), bitmap -> {
+                                                                if (bitmap != null) {
+                                                                    // Aquí es donde debes establecer la imagen en el ImageView
+
+                                                                    progressBar2.setVisibility(View.GONE);
+                                                                    imageViewPerfilUsuario.setImageBitmap(bitmap);
+                                                                    imageViewPerfilUsuario.setVisibility(View.VISIBLE);
+
+                                                                } else {
+                                                                    // Maneja el caso en que la descarga falla o no hay imagen
+                                                                    // Podrías mostrar una imagen predeterminada o hacer otra acción aquí
+                                                                }
+                                                            });
+                                                            cargarDatosActualPerfil();
+                                                        } else
+                                                            Log.e(FragmentManager.TAG, "El objeto Usuario es null");
+                                                    });
                                                 }
 
                                                 @Override
