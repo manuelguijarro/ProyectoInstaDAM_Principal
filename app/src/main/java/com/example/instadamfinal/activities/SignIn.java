@@ -15,6 +15,11 @@ import com.example.instadamfinal.controllers.DBController;
 import com.example.instadamfinal.controllers.EmailController;
 import com.example.instadamfinal.controllers.PasswordController;
 
+/**
+ * Clase que extiende de Activity, esta clase es la encargada de mostrar la vista asociada a el inicio de sesion
+ * y realizar todo el proceso de inicio de sesion de el usuario.
+ */
+
 public class SignIn extends AppCompatActivity {
     private EditText editTextEmailUsuario;
     private EditText editTextPasswordUsuario;
@@ -87,9 +92,11 @@ public class SignIn extends AppCompatActivity {
             mostrarMensajeAlerta("Error en inicio de sesion, registra un nuevo usuario o edita los inputs");
         }
     }
+
     /**
      * Con esta función mostramos un mensaje de alerta en la pantalla de Inicio de sesion, el texto que se introduce dependerá del resultado de nuestra
-     * operacion de envioFormulario/login.
+     *  operacion de envioFormulario/login.
+     * @param mensaje es el mensaje que recibe como parametro y muestra en la pantalla.
      */
     private void mostrarMensajeAlerta(String mensaje) {
         textViewMensajeAlertaRegistro.setText(mensaje);

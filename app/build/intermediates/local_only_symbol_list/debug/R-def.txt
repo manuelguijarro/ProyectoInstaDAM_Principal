@@ -37,6 +37,7 @@ id menu_settings
 id messageAlert
 id progressBar
 id progressBar2
+id progressBar3
 id recyclerView
 id sendButton
 id signUpButton

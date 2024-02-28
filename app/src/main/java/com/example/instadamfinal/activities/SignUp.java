@@ -48,7 +48,10 @@ public class SignUp extends AppCompatActivity {
         botonVolverInicioSesion = findViewById(R.id.signUpButton);
         botonEnviar = findViewById(R.id.sendButton);
     }
-
+    /**
+     * Funcion para cargar los eventos de botones  para que el usuario pueda interactuar con ellos.
+     * tanto como para enviar el formulario como para cargar el activityInicioSesion
+     */
     private void cargarEventosOnClickBotones() {
         botonEnviar.setOnClickListener(this::enviarFormulario);
         botonVolverInicioSesion.setOnClickListener(this::cargarActivityInicioSesion);
@@ -70,6 +73,12 @@ public class SignUp extends AppCompatActivity {
             mostrarMensajeAlerta("Datos incorrectos, vuelve a introducir los datos correctamente");
     }
 
+    /**
+     *
+     * @param nombreUsuario
+     * @param emailUsuario
+     * @param passwordUsuario
+     */
     private void registrarNuevoUsuario(String nombreUsuario, String emailUsuario, String passwordUsuario) {
         DBController dbController = new DBController();
         boolean usuarioCreado = dbController.registrarUsuario(this.getBaseContext(), nombreUsuario, emailUsuario, passwordUsuario);
@@ -79,7 +88,10 @@ public class SignUp extends AppCompatActivity {
         else
             mostrarMensajeAlerta("Error en la creacion del usuario, el usuario ya existe");
     }
-
+    /**
+     * Con esta función mostramos un mensaje de alerta en la pantalla de Registro, el texto que se introduce dependerá del resultado de nuestra
+     * operacion de envioFormulario/registro.
+     */
     private void mostrarMensajeAlerta(String mensaje) {
         textViewMensajeAlertaRegistro.setText(mensaje);
     }

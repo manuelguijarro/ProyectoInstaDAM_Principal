@@ -4,6 +4,9 @@ import com.google.firebase.Timestamp;
 
 import java.util.List;
 
+/**
+ * Clase modelo que representa a un Usuario de nuestra App.Lo utilizamos para añadir o obtener el usuario de la base de datos firebase.
+ */
 public class Usuario {
     private String uniqueID;
     private String userName;

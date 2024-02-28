@@ -1,5 +1,7 @@
 package com.example.instadamfinal.models;
-
+/**
+ * Clase modelo que representa una Publicacion de nuestra App.Lo utilizamos para añadir o obtener la publicacion mediante una Lista en la clase Usuario.
+ */
 public class Publicacion {
 
     private String titulo;

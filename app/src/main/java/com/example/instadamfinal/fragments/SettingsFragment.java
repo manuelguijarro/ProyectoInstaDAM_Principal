@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,7 @@ public class SettingsFragment extends Fragment {
 
     private Usuario usuarioLogeado;
     private Fragment fragment;
-
+    private ProgressBar progressBar;
     private static final int SELECT_PHOTO = 100;
 
     public SettingsFragment() {
@@ -234,6 +235,7 @@ public class SettingsFragment extends Fragment {
                 // Usa el objeto Usuario aquí
                 //Realizamos desde aqui los metodos porque nos aseguramso que el usuario se a cargado de la base de datos
                 usuarioLogeado = usuario;
+                progressBar.setVisibility(View.GONE);
                 cargarImagenActualPerfil(view);
                 cargarDatosActualPerfil();
             } else

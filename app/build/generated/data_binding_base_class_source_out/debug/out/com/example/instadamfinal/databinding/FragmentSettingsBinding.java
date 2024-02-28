@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +43,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
 
   @NonNull
   public final ImageView imageViewSubirImagenSubirPost;
+
+  @NonNull
+  public final ProgressBar progressBar3;
 
   @NonNull
   public final TextView textView10;
@@ -80,11 +84,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
       @NonNull Button buttonPublicarPublicacion, @NonNull Button buttonSubirImagen,
       @NonNull EditText editTextTextEmailUsuario, @NonNull EditText editTextTextPassword2,
       @NonNull EditText editTextTextTituloPublicacion, @NonNull ImageView imageViewPerfilUsuario,
-      @NonNull ImageView imageViewSubirImagenSubirPost, @NonNull TextView textView10,
-      @NonNull TextView textView11, @NonNull TextView textView12, @NonNull TextView textView13,
-      @NonNull TextView textView14, @NonNull TextView textView15, @NonNull TextView textView6,
-      @NonNull TextView textView7, @NonNull TextView textViewEmailUsuario,
-      @NonNull TextView textViewMensajeAlertaSettings, @NonNull TextView textViewNombreUsuario) {
+      @NonNull ImageView imageViewSubirImagenSubirPost, @NonNull ProgressBar progressBar3,
+      @NonNull TextView textView10, @NonNull TextView textView11, @NonNull TextView textView12,
+      @NonNull TextView textView13, @NonNull TextView textView14, @NonNull TextView textView15,
+      @NonNull TextView textView6, @NonNull TextView textView7,
+      @NonNull TextView textViewEmailUsuario, @NonNull TextView textViewMensajeAlertaSettings,
+      @NonNull TextView textViewNombreUsuario) {
     this.rootView = rootView;
     this.buttonPublicarPublicacion = buttonPublicarPublicacion;
     this.buttonSubirImagen = buttonSubirImagen;
@@ -93,6 +98,7 @@ public final class FragmentSettingsBinding implements ViewBinding {
     this.editTextTextTituloPublicacion = editTextTextTituloPublicacion;
     this.imageViewPerfilUsuario = imageViewPerfilUsuario;
     this.imageViewSubirImagenSubirPost = imageViewSubirImagenSubirPost;
+    this.progressBar3 = progressBar3;
     this.textView10 = textView10;
     this.textView11 = textView11;
     this.textView12 = textView12;
@@ -175,6 +181,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBar3;
+      ProgressBar progressBar3 = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar3 == null) {
+        break missingId;
+      }
+
       id = R.id.textView10;
       TextView textView10 = ViewBindings.findChildViewById(rootView, id);
       if (textView10 == null) {
@@ -244,8 +256,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
       return new FragmentSettingsBinding((ConstraintLayout) rootView, buttonPublicarPublicacion,
           buttonSubirImagen, editTextTextEmailUsuario, editTextTextPassword2,
           editTextTextTituloPublicacion, imageViewPerfilUsuario, imageViewSubirImagenSubirPost,
-          textView10, textView11, textView12, textView13, textView14, textView15, textView6,
-          textView7, textViewEmailUsuario, textViewMensajeAlertaSettings, textViewNombreUsuario);
+          progressBar3, textView10, textView11, textView12, textView13, textView14, textView15,
+          textView6, textView7, textViewEmailUsuario, textViewMensajeAlertaSettings,
+          textViewNombreUsuario);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
