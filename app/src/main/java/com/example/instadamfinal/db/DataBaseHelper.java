@@ -10,6 +10,10 @@ import androidx.annotation.Nullable;
 
 import com.example.instadamfinal.controllers.PasswordController;
 
+/**
+ * Clase que utilizamos para conectar con nuestra base de datos sql_lite, de esta manera tenemos una clase encapsulada, y accedemos a sus metodos a traves de ella.
+ */
+
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "users";
     private static final int DATABASE_VERSION = 1;
@@ -29,7 +33,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
+    /**
+     *Metodo para comprobar si la contraseña y el email introducidos por el usuario coinciden con el de la base de datos,
+     * si coinciden devolverá el id_unico asociado al usuario.
+     */
     public String comprobarEmailPasswordUsuarioDB(String emailUsuario, String passwordUsuario) {
         String idUnico = "";
 
@@ -55,6 +62,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     *Metodo para verificar si existe el email en la base de datos, devolvera true o false en funcion del resultado de la query.
+     */
     public boolean verificarExisteEmailUsuarioHelper(String emailUsuario){
         Cursor cursor = this.getReadableDatabase().query(
                 StructureDB.PERSONAL_DATA_TABLE,
@@ -74,6 +84,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     *Con este metodo, creariamos un usuario en nuestra base de datos, es el metodo que crea el usuario en sql_lite.
+     */
     public boolean crearNuevoUsuarioHelper(String idUnico,String nombreUsuario, String emailUsuario, String passwordUsuario){
         SQLiteDatabase db = this.getWritableDatabase();
 

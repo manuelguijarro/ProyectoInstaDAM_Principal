@@ -33,9 +33,6 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final EditText editTextTextEmailUsuario;
 
   @NonNull
-  public final EditText editTextTextPassword2;
-
-  @NonNull
   public final EditText editTextTextTituloPublicacion;
 
   @NonNull
@@ -63,9 +60,6 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final TextView textView13;
 
   @NonNull
-  public final TextView textView14;
-
-  @NonNull
   public final TextView textView15;
 
   @NonNull
@@ -85,19 +79,17 @@ public final class FragmentSettingsBinding implements ViewBinding {
 
   private FragmentSettingsBinding(@NonNull ConstraintLayout rootView,
       @NonNull Button buttonPublicarPublicacion, @NonNull Button buttonSubirImagen,
-      @NonNull EditText editTextTextEmailUsuario, @NonNull EditText editTextTextPassword2,
-      @NonNull EditText editTextTextTituloPublicacion, @NonNull ImageView imageViewPerfilUsuario,
-      @NonNull ImageView imageViewSubirImagenSubirPost, @NonNull ProgressBar progressBar3,
-      @NonNull ProgressBar progressBar4, @NonNull TextView textView10, @NonNull TextView textView11,
-      @NonNull TextView textView12, @NonNull TextView textView13, @NonNull TextView textView14,
-      @NonNull TextView textView15, @NonNull TextView textView6, @NonNull TextView textView7,
-      @NonNull TextView textViewEmailUsuario, @NonNull TextView textViewMensajeAlertaSettings,
-      @NonNull TextView textViewNombreUsuario) {
+      @NonNull EditText editTextTextEmailUsuario, @NonNull EditText editTextTextTituloPublicacion,
+      @NonNull ImageView imageViewPerfilUsuario, @NonNull ImageView imageViewSubirImagenSubirPost,
+      @NonNull ProgressBar progressBar3, @NonNull ProgressBar progressBar4,
+      @NonNull TextView textView10, @NonNull TextView textView11, @NonNull TextView textView12,
+      @NonNull TextView textView13, @NonNull TextView textView15, @NonNull TextView textView6,
+      @NonNull TextView textView7, @NonNull TextView textViewEmailUsuario,
+      @NonNull TextView textViewMensajeAlertaSettings, @NonNull TextView textViewNombreUsuario) {
     this.rootView = rootView;
     this.buttonPublicarPublicacion = buttonPublicarPublicacion;
     this.buttonSubirImagen = buttonSubirImagen;
     this.editTextTextEmailUsuario = editTextTextEmailUsuario;
-    this.editTextTextPassword2 = editTextTextPassword2;
     this.editTextTextTituloPublicacion = editTextTextTituloPublicacion;
     this.imageViewPerfilUsuario = imageViewPerfilUsuario;
     this.imageViewSubirImagenSubirPost = imageViewSubirImagenSubirPost;
@@ -107,7 +99,6 @@ public final class FragmentSettingsBinding implements ViewBinding {
     this.textView11 = textView11;
     this.textView12 = textView12;
     this.textView13 = textView13;
-    this.textView14 = textView14;
     this.textView15 = textView15;
     this.textView6 = textView6;
     this.textView7 = textView7;
@@ -158,12 +149,6 @@ public final class FragmentSettingsBinding implements ViewBinding {
       id = R.id.editTextTextEmailUsuario;
       EditText editTextTextEmailUsuario = ViewBindings.findChildViewById(rootView, id);
       if (editTextTextEmailUsuario == null) {
-        break missingId;
-      }
-
-      id = R.id.editTextTextPassword2;
-      EditText editTextTextPassword2 = ViewBindings.findChildViewById(rootView, id);
-      if (editTextTextPassword2 == null) {
         break missingId;
       }
 
@@ -221,12 +206,6 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textView14;
-      TextView textView14 = ViewBindings.findChildViewById(rootView, id);
-      if (textView14 == null) {
-        break missingId;
-      }
-
       id = R.id.textView15;
       TextView textView15 = ViewBindings.findChildViewById(rootView, id);
       if (textView15 == null) {
@@ -264,11 +243,10 @@ public final class FragmentSettingsBinding implements ViewBinding {
       }
 
       return new FragmentSettingsBinding((ConstraintLayout) rootView, buttonPublicarPublicacion,
-          buttonSubirImagen, editTextTextEmailUsuario, editTextTextPassword2,
-          editTextTextTituloPublicacion, imageViewPerfilUsuario, imageViewSubirImagenSubirPost,
-          progressBar3, progressBar4, textView10, textView11, textView12, textView13, textView14,
-          textView15, textView6, textView7, textViewEmailUsuario, textViewMensajeAlertaSettings,
-          textViewNombreUsuario);
+          buttonSubirImagen, editTextTextEmailUsuario, editTextTextTituloPublicacion,
+          imageViewPerfilUsuario, imageViewSubirImagenSubirPost, progressBar3, progressBar4,
+          textView10, textView11, textView12, textView13, textView15, textView6, textView7,
+          textViewEmailUsuario, textViewMensajeAlertaSettings, textViewNombreUsuario);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

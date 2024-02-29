@@ -61,8 +61,8 @@ public class SignIn extends AppCompatActivity {
     }
 
     /**
-     * Con esta función recogemos los datos del formulario de contacto y verificamos que los input sean correctos(mediante la clase de apoyo
-     * EmailController y PasswordController. una vez verificado que el e-mail y contraseña cumple con los requisitos obligatorios, procedemos
+     * Con esta función recogemos los datos del formulario de inicio sesion y verificamos que los input sean correctos(mediante la clase de apoyo
+     * EmailController y PasswordController). una vez verificado que el e-mail y contraseña cumple con los requisitos obligatorios, procedemos
      * a logeara nuestro usuario.
      */
     private void enviarFormulario(View v) {

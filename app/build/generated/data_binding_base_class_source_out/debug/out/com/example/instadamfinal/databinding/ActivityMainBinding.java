@@ -4,9 +4,9 @@ package com.example.instadamfinal.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.viewbinding.ViewBinding;
@@ -28,15 +28,15 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FragmentContainerView fragmentContainerView;
 
   @NonNull
-  public final Toolbar toolbar;
+  public final TextView textView4;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull BottomNavigationView bottomNavigationView,
-      @NonNull FragmentContainerView fragmentContainerView, @NonNull Toolbar toolbar) {
+      @NonNull FragmentContainerView fragmentContainerView, @NonNull TextView textView4) {
     this.rootView = rootView;
     this.bottomNavigationView = bottomNavigationView;
     this.fragmentContainerView = fragmentContainerView;
-    this.toolbar = toolbar;
+    this.textView4 = textView4;
   }
 
   @Override
@@ -78,14 +78,14 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.toolbar;
-      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
-      if (toolbar == null) {
+      id = R.id.textView4;
+      TextView textView4 = ViewBindings.findChildViewById(rootView, id);
+      if (textView4 == null) {
         break missingId;
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, bottomNavigationView,
-          fragmentContainerView, toolbar);
+          fragmentContainerView, textView4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

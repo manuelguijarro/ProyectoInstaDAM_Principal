@@ -24,7 +24,7 @@
             android:id="@+id/textView6"
             android:layout_width="180dp"
             android:layout_height="29dp"
-            android:text="Nombre de usuario actual:"
+            android:text="@string/Nombre_usuario_actual"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.137"
@@ -36,13 +36,55 @@
             android:id="@+id/textView13"
             android:layout_width="180dp"
             android:layout_height="29dp"
-            android:text="Nuevo nombre de usuario:"
+            android:text="@string/Nuevo_nombre_usuario"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.51" />
+            app:layout_constraintVertical_bias="0.562" />
+
+        <EditText
+            android:id="@+id/editTextTextEmailUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.741" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="172dp"
+            android:layout_height="26dp"
+            android:text="@string/Nuevo_email_usuario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.679" />
+
+        <EditText
+            android:id="@+id/editTextTextTituloPublicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nombre_usuario"
+            android:inputType="text"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.068"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.623" />
 
         <TextView
             android:id="@+id/textViewNombreUsuario"
@@ -72,7 +114,7 @@
             android:id="@+id/textView11"
             android:layout_width="406dp"
             android:layout_height="29dp"
-            android:text="-DATOS A ACTUALIZAR-"
+            android:text="@string/Datos_actualizar"
             android:textAlignment="center"
             android:textColor="#F90202"
             android:textStyle="bold"
@@ -87,7 +129,7 @@
             android:id="@+id/textView10"
             android:layout_width="115dp"
             android:layout_height="24dp"
-            android:text="Imagen perfil"
+            android:text="@string/Imagen_perfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.945"
@@ -99,37 +141,13 @@
             android:id="@+id/textView7"
             android:layout_width="132dp"
             android:layout_height="26dp"
-            android:text="E-mail actual:"
+            android:text="@string/Email_usuario_actual"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.113"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.261" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="172dp"
-            android:layout_height="26dp"
-            android:text="Nuevo e-mail:"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.627" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="132dp"
-            android:layout_height="26dp"
-            android:text="Nueva contraseña:"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.065"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.742" />
 
         <ImageView
             android:id="@+id/imageViewPerfilUsuario"
@@ -160,7 +178,7 @@
             android:id="@+id/textView15"
             android:layout_width="132dp"
             android:layout_height="26dp"
-            android:text="Nueva imagen perfil"
+            android:text="@string/nueva_imagen_perfil"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.894"
@@ -193,51 +211,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.911" />
-
-        <EditText
-            android:id="@+id/editTextTextEmailUsuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Email"
-            android:inputType="text"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.061"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.689" />
-
-        <EditText
-            android:id="@+id/editTextTextTituloPublicacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Nombre usuario"
-            android:inputType="text"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.068"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.572" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="text"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.061"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.807" />
 
         <TextView
             android:id="@+id/textViewMensajeAlertaSettings"

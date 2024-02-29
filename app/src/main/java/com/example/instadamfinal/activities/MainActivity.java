@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
-    public static int idUsuario = 1;
+
     public static String idUnicoStatic;
     public static String urlImagenPostFragment;
 
@@ -34,11 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
+        //Aqui nos pasamos el intent desde el inicio de sesion, para utilizar el id unico del usuario.
         Intent intent = getIntent();
         String idUnico = intent.getStringExtra("key");
         idUnicoStatic = idUnico;
 
-        loadToolbar();
+
         loadFragment();
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -47,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
+    /**
+     *
+     * Esta funcion la utilizamos para elegir el fragmento que vamos a utilizar mediante click en el menu inferior.
+     */
     private boolean cambioFragmento(MenuItem item) {
         int idItemn = item.getItemId();
         if (idItemn == R.id.menu_home){
@@ -71,19 +75,24 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Para que cuando iniciemos el Main activity el primer fragmento que salga sea el Home fragment
+     */
     private void loadFragment() {
         fragment = new HomeFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainerView, fragment)
                 .commit();
     }
+
+    /**
+     *
+     * Esta funcion es necesaria para inflar el menu de opciones en la vista de la app.
+     */
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.bottom_menu, menu);
         return true;
     }
 
-    private void loadToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
+
 }

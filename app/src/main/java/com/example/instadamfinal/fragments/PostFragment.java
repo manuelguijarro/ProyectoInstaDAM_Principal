@@ -31,7 +31,10 @@ import com.example.instadamfinal.listeners.SubirImagenUsuarioListener;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-
+/**
+ * Fragmento que se encarga de subir nuevas publicaciones a nuestra App, las subira tanto a la base de datos firebase, como la imagen
+ * al almacenamiento en la nube Firestorage.
+ */
 public class PostFragment extends Fragment {
     private static final int SELECT_PHOTO = 100;
 
@@ -115,6 +118,7 @@ public class PostFragment extends Fragment {
                 FireStorageController.subirImagen(getContext(), urlImagenPostFragment, imagenGaleriaBitmap, new SubirImagenUsuarioListener() {
                     @Override
                     public void imagenSubida() {
+
                         FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
                         firebaseDataBaseHelper.aniadirNuevaPublicacionFirebaseHelper(getContext(),tituloPublicacion,descripcionPublicacion);
                         progressBarPost.setVisibility(View.GONE);
@@ -130,6 +134,10 @@ public class PostFragment extends Fragment {
             }
         }
     }
+
+    /**
+     * Este metodo es para seleccionar una imagen desde la galeria del movil, para luego subirla a firestorage.
+     */
     private void seleccionarImagenDeGaleria() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");

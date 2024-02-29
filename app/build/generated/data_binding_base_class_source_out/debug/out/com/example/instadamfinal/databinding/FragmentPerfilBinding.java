@@ -23,10 +23,13 @@ public final class FragmentPerfilBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final ImageView imageView;
+  public final ImageView imageViewPerfilUsuario;
 
   @NonNull
   public final ProgressBar progressBar2;
+
+  @NonNull
+  public final ProgressBar progressBar7;
 
   @NonNull
   public final RecyclerView recyclerView;
@@ -34,12 +37,14 @@ public final class FragmentPerfilBinding implements ViewBinding {
   @NonNull
   public final TextView textViewNombreUsuarioPerfil;
 
-  private FragmentPerfilBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imageView,
-      @NonNull ProgressBar progressBar2, @NonNull RecyclerView recyclerView,
+  private FragmentPerfilBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ImageView imageViewPerfilUsuario, @NonNull ProgressBar progressBar2,
+      @NonNull ProgressBar progressBar7, @NonNull RecyclerView recyclerView,
       @NonNull TextView textViewNombreUsuarioPerfil) {
     this.rootView = rootView;
-    this.imageView = imageView;
+    this.imageViewPerfilUsuario = imageViewPerfilUsuario;
     this.progressBar2 = progressBar2;
+    this.progressBar7 = progressBar7;
     this.recyclerView = recyclerView;
     this.textViewNombreUsuarioPerfil = textViewNombreUsuarioPerfil;
   }
@@ -71,15 +76,21 @@ public final class FragmentPerfilBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.imageView;
-      ImageView imageView = ViewBindings.findChildViewById(rootView, id);
-      if (imageView == null) {
+      id = R.id.imageViewPerfilUsuario;
+      ImageView imageViewPerfilUsuario = ViewBindings.findChildViewById(rootView, id);
+      if (imageViewPerfilUsuario == null) {
         break missingId;
       }
 
       id = R.id.progressBar2;
       ProgressBar progressBar2 = ViewBindings.findChildViewById(rootView, id);
       if (progressBar2 == null) {
+        break missingId;
+      }
+
+      id = R.id.progressBar7;
+      ProgressBar progressBar7 = ViewBindings.findChildViewById(rootView, id);
+      if (progressBar7 == null) {
         break missingId;
       }
 
@@ -95,8 +106,8 @@ public final class FragmentPerfilBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentPerfilBinding((ConstraintLayout) rootView, imageView, progressBar2,
-          recyclerView, textViewNombreUsuarioPerfil);
+      return new FragmentPerfilBinding((ConstraintLayout) rootView, imageViewPerfilUsuario,
+          progressBar2, progressBar7, recyclerView, textViewNombreUsuarioPerfil);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,5 +1,8 @@
 package com.example.instadamfinal.db;
 
+/**
+ * Clase que diseña la estructura de nuestra base de datos sql_lite
+ */
 public class StructureDB {
     public static final String PERSONAL_DATA_TABLE = "personalData";
     public static final String COLUMN_ID = "id";

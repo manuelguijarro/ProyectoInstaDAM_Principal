@@ -18,6 +18,10 @@ import com.example.instadamfinal.models.Publicacion;
 
 import java.util.List;
 
+/**
+ * Clase que utilizamos para cargar en el Home fragmento el recyclerView de publicaciones, cada una con su imagen , dado que la descargamos en el
+ * metodo bind
+ */
 public class PublicacionAdapter extends RecyclerView.Adapter<PublicacionAdapter.PublicacionViewHolder> {
     private List<Publicacion> publicacionList;
 
@@ -61,26 +65,25 @@ public class PublicacionAdapter extends RecyclerView.Adapter<PublicacionAdapter.
             progressBar = itemView.findViewById(R.id.progressBar6);
         }
 
+        /**
+         * En este metodo, realizamos la descarga de la imagen desde la nube(Firestorage) y una vez que la descargamos, como tenemos implementada una interfaz
+         * , vamos cargando los datos, si no utilizasemos la interfaz, podria acabar la imagen en null y nuestra aplicacion fallaria.
+         */
         public void  bind(Publicacion publicacion) {
 
             Context context = itemView.getContext();
 
 
-            FireStorageController.descargarImagen(context, publicacion.getUrlImagenPublicacion(), new DescargaImagenUsuarioListener() {
-
-
-                @Override
-                public void imagenDescargada(Bitmap bitmap) {
-                    progressBar.setVisibility(View.GONE);
-                    cargarDatos(bitmap,context,publicacion);
-                }
+            FireStorageController.descargarImagen(context, publicacion.getUrlImagenPublicacion(), bitmap -> {
+                progressBar.setVisibility(View.GONE);
+                cargarDatos(bitmap,context,publicacion);
             });
 
         }
 
         private void cargarDatos(Bitmap bitmap, Context context, Publicacion publicacion) {
             this.imagenPublicacion.setImageBitmap(bitmap);
-            this.autorPublicacion.setText(publicacion.getUrlImagenPublicacion());
+            this.autorPublicacion.setText(publicacion.getAutorPublicacion());
             this.tituloPublicacion.setText(publicacion.getTitulo());
             this.descripcionPublicacion.setText(publicacion.getDescripcion());
         }

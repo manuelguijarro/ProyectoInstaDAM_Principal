@@ -66,11 +66,11 @@ public class FireStorageController {
     }
 
 
-
-
-
-
-
+    /**
+     * Este metodo es utilizado para descargar imagenes desde firestorage(de 1 en 1), en este metodo la pasamos por parametro la interfaz que hemos definido
+     * para que cuando queramos implementar este metodo, tenga que implementarse los metodos de la interfaz, así aunque se descarge de manera asincrona, los datos
+     * no se cargaran hasta que este descargada completamente.
+     */
     public static void descargarImagen(Context context, String imagenNombre, DescargaImagenUsuarioListener descargaImagenUsuarioListener) {
         FirebaseStorage storage = FirebaseStorage.getInstance("gs://instadam-76807.appspot.com");
         StorageReference storageRef = storage.getReference().child("imagenes").child(imagenNombre);

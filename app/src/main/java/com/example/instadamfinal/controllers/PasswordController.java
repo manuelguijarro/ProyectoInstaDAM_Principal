@@ -6,7 +6,14 @@ import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Clase que uitlizamos tanto para verificar que la contraseña cumpla con unos requisitos minimos, como para cifrar la contraseña.
+ */
 public class PasswordController {
+    /**
+     *
+     * Metodo que utilizamos para cifrar la contraseña del usuario antes de mandarla a la base de datos.
+     */
     public static  String get_SHA_512_SecurePassword(String passwordToHash, String salt){
 
         String generatedPassword = null;
@@ -26,6 +33,10 @@ public class PasswordController {
         }
         return generatedPassword;
     }
+
+    /**
+     * Con este metodo comprobamos que la contraseña no este vacía y que cumpla con unos requisitos minimos.
+     */
 
     public static boolean comprobarPassword(String passwordUsuario) {
         if (!passwordUsuario.isEmpty()){

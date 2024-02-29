@@ -28,7 +28,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Fragmento que representa el Home de nuestra App, es donde aterriza nuestro usuario cuando se logea correctamente.
+ */
 public class HomeFragment extends Fragment {
 
     private RecyclerView rvListPublicaciones;
@@ -61,7 +63,9 @@ public class HomeFragment extends Fragment {
 
 
 
-
+        /*
+        Aqui es donde cargamos los datos del usuario de firebase, y la cargamos en el recyclerView .
+         */
         usuariosDBRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
                 Usuario usuario = documentSnapshot.toObject(Usuario.class);

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,9 @@ import android.widget.Toast;
 import com.example.instadamfinal.R;
 import com.example.instadamfinal.activities.MainActivity;
 import com.example.instadamfinal.adapters.ImagenAdapter;
+import com.example.instadamfinal.controllers.FireStorageController;
 import com.example.instadamfinal.controllers.FirebaseManager;
+import com.example.instadamfinal.listeners.DescargaImagenUsuarioListener;
 import com.example.instadamfinal.models.Publicacion;
 import com.example.instadamfinal.models.Usuario;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,10 +31,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Este fragmento carga los datos de perfil de usuario, tanto como las imagenes que tiene subida a su almacenamiento en la nube, como el nombre de usuario y imagen de perfil
+ */
 public class PerfilFragment extends Fragment {
     private RecyclerView recyclerView;
     private TextView textViewNombreUsuarioPerfilText;
     private ProgressBar progressBarPerfil;
+    private ProgressBar progressBarImagenPerfil;
+    private ImageView imageViewPerfil;
 
     public PerfilFragment() {
     }
@@ -41,46 +49,48 @@ public class PerfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        // Obtener la referencia al RecyclerView en tu layout
         recyclerView = view.findViewById(R.id.recyclerView);
         textViewNombreUsuarioPerfilText = view.findViewById(R.id.textViewNombreUsuarioPerfil);
         progressBarPerfil = view.findViewById(R.id.progressBar2);
-        // Crear una instancia de GridLayoutManager con orientación horizontal
+        progressBarImagenPerfil = view.findViewById(R.id.progressBar7);
+        imageViewPerfil = view.findViewById(R.id.imageViewPerfilUsuario);
+
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
 
-        // Configurar el RecyclerView con el GridLayoutManager
         recyclerView.setLayoutManager(layoutManager);
 
-        // Crear una referencia a la colección "usuarios_db" en Firestore
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference usuariosDBRef = db.collection("usuarios_db").document("usuario_" + MainActivity.idUnicoStatic);
 
-        // Obtener los datos del usuario de Firestore
-        usuariosDBRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    Usuario usuario = documentSnapshot.toObject(Usuario.class);
-                    if (usuario != null) {
-                        textViewNombreUsuarioPerfilText.setText(usuario.getUserName());
-                        List<String> imageUrls = new ArrayList<>();
-                        for (Publicacion publicacion : usuario.getPublicaciones()) {
-                            imageUrls.add(publicacion.getUrlImagenPublicacion());
-                        }
 
-                        // Descargar y cargar las imágenes en el RecyclerView
-                        FirebaseManager.downloadImages(getContext(), imageUrls, new FirebaseManager.OnImagesDownloadListener() {
-                            @Override
-                            public void onImagesDownloaded(List<Bitmap> bitmaps) {
-                                ImagenAdapter imagenAdapter = new ImagenAdapter(bitmaps);
-                                progressBarPerfil.setVisibility(View.GONE);
-                                recyclerView.setAdapter(imagenAdapter);
-                            }
-                        });
+        /*
+        Aqui es donde obtenemos el usuario de la base de datos, y creamos una Lista con las url de usuario, para luego añadirlas al recyclerView.
+         */
+
+
+
+        usuariosDBRef.get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                Usuario usuario = documentSnapshot.toObject(Usuario.class);
+                if (usuario != null) {
+                    textViewNombreUsuarioPerfilText.setText(usuario.getUserName());
+                    List<String> imageUrls = new ArrayList<>();
+                    for (Publicacion publicacion : usuario.getPublicaciones()) {
+                        imageUrls.add(publicacion.getUrlImagenPublicacion());
                     }
-                } else {
-                    Toast.makeText(getContext(), "El documento no existe", Toast.LENGTH_SHORT).show();
+
+                    FireStorageController.descargarImagen(getContext(), usuario.getUrlImagenPerfil(), bitmap -> {
+                        progressBarImagenPerfil.setVisibility(View.GONE);
+                        imageViewPerfil.setImageBitmap(bitmap);
+                    });
+                    FirebaseManager.downloadImages(getContext(), imageUrls, bitmaps -> {
+                        ImagenAdapter imagenAdapter = new ImagenAdapter(bitmaps);
+                        progressBarPerfil.setVisibility(View.GONE);
+                        recyclerView.setAdapter(imagenAdapter);
+                    });
                 }
+            } else {
+                Toast.makeText(getContext(), "El documento no existe", Toast.LENGTH_SHORT).show();
             }
         });
 

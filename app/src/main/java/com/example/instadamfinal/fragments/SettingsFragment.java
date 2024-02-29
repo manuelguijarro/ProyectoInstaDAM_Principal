@@ -50,12 +50,10 @@ public class SettingsFragment extends Fragment {
     private TextView textViewMensajeAlerta;
     private EditText editTextTextNombreUsuarioInput;
     private EditText editTextTextEmailUsuarioInput;
-    private EditText editTextTextPasswordInput;
     private Button buttonSubirImagenUsuario;
     private Button buttonActualizarDatosUsuario;
 
     private Usuario usuarioLogeado;
-    private Fragment fragment;
     private ProgressBar progressBar;
     private ProgressBar progressBar2;
     private static final int SELECT_PHOTO = 100;
@@ -89,6 +87,10 @@ public class SettingsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Funcion para cargar los recuros del xml a nuestros objetos de java, una vez cargados
+     * ya podemos empezar a utilizar los objetos.
+     */
     private void cargarRecursosFragmento(View view) {
         //TextViews
         textViewNombreUsuario = view.findViewById(R.id.textViewNombreUsuario);
@@ -97,7 +99,7 @@ public class SettingsFragment extends Fragment {
         //Inputs
         editTextTextNombreUsuarioInput = view.findViewById(R.id.editTextTextTituloPublicacion);
         editTextTextEmailUsuarioInput = view.findViewById(R.id.editTextTextEmailUsuario);
-        editTextTextPasswordInput = view.findViewById(R.id.editTextTextPassword2);
+
         //Imagenes
         imageViewSubirImagenActualizarInput = view.findViewById(R.id.imageViewSubirImagenSubirPost);
         imageViewPerfilUsuario = view.findViewById(R.id.imageViewPerfilUsuario);
@@ -105,7 +107,10 @@ public class SettingsFragment extends Fragment {
         buttonSubirImagenUsuario = view.findViewById(R.id.buttonSubirImagen);
         buttonActualizarDatosUsuario = view.findViewById(R.id.buttonPublicarPublicacion);
     }
-
+    /**
+     * Funcion para cargar los eventos de botones  para que el usuario pueda interactuar con ellos.
+     * tanto como para subir la imagen, como para actualizar los datos de usuario.
+     */
     private void cargarEventosOnClickBotones() {
         buttonSubirImagenUsuario.setOnClickListener(this::actualizarImagenSubida);
         buttonActualizarDatosUsuario.setOnClickListener(this::actualizarDatosUsuario);
@@ -116,11 +121,20 @@ public class SettingsFragment extends Fragment {
     private void actualizarImagenSubida(View view) {
         seleccionarImagenDeGaleria();
     }
+
+    /**
+     * Metodo que utiliza los Intent para obtener una imagen de nuestra galeria.
+     */
     private void seleccionarImagenDeGaleria() {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, SELECT_PHOTO);
     }
+
+    /**
+     *
+     *Una vez obtenido el Intent, tenemos que obtener el dato y descargarlo mediante un InputStream, y luego añadirlo a el objeto Bitmap para actualizar el perfil despues.
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -143,105 +157,74 @@ public class SettingsFragment extends Fragment {
             }
         }
     }
+
+    /**
+     * Este metodo es el necesario para actualizar todos los datos de Perfil de usuario, tanto el nombre e email, como la imagen de perfil.(solo actualiza el usuario de firebase)
+     */
     private void actualizarDatosUsuario(View view) {
 
         progressBar2.setVisibility(View.VISIBLE);
         String nombreUsuario = editTextTextNombreUsuarioInput.getText().toString();
         String emailUsuario = editTextTextEmailUsuarioInput.getText().toString();
-        String passwordUsuario = editTextTextPasswordInput.getText().toString();
 
-        if (!nombreUsuario.isEmpty() && !emailUsuario.isEmpty()&& !passwordUsuario.isEmpty())
-            if (EmailController.comprobarEmail(emailUsuario)&&
-                    PasswordController.comprobarPassword(passwordUsuario)){
-                //Ahora hemos verificado que los campos no estan vacios, y que el email y contraseña
-                //coinciden con los requisitos.
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(this.getContext());
-                //boolean resultadoExisteEmail = dataBaseHelper.verificarExisteEmailUsuarioHelper(emailUsuario);
+        if (!nombreUsuario.isEmpty() && !emailUsuario.isEmpty())
+            if (EmailController.comprobarEmail(emailUsuario)){
 
-                if (/*!resultadoExisteEmail*/true){
-                    //Actualizamos los datos de sqlite
-
-                    //Actualizamos los datos de firebase.
                     FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
                     firebaseDataBaseHelper.actualizarDatosUsuarioFirebaseHelper(getContext(), nombreUsuario, emailUsuario,
-                            "imagen_perfil" + idUnicoStatic, new UsuarioActualizadoListener() {
-                                @Override
-                                public void usuarioActualizado() {
-                                    //pero antes subimos la imagen.
-                                    FireStorageController.subirImagen(getContext(), "imagen_perfil" + idUnicoStatic,
-                                            imagenGaleriaBitmap, new SubirImagenUsuarioListener() {
-                                                @SuppressLint("RestrictedApi")
-                                                @Override
-                                                public void imagenSubida() throws InterruptedException {
-                                                    Thread.sleep(3000);
-                                                    FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
-                                                    firebaseDataBaseHelper.cargarDatosUsuarioFirebaseHelper( getContext(), usuario -> {
-                                                        if (usuario != null) {
-                                                            // Usa el objeto Usuario aquí
-                                                            //Realizamos desde aqui los metodos porque nos aseguramso que el usuario se a cargado de la base de datos
-                                                            usuarioLogeado = usuario;
+                            "imagen_perfil" + idUnicoStatic, () -> {
+                                //pero antes subimos la imagen.
+                                FireStorageController.subirImagen(getContext(), "imagen_perfil" + idUnicoStatic,
+                                        imagenGaleriaBitmap, new SubirImagenUsuarioListener() {
+                                            @SuppressLint("RestrictedApi")
+                                            @Override
+                                            public void imagenSubida() throws InterruptedException {
+                                                Thread.sleep(3000);
+                                                FirebaseDataBaseHelper firebaseDataBaseHelper1 = new FirebaseDataBaseHelper();
+                                                firebaseDataBaseHelper1.cargarDatosUsuarioFirebaseHelper( getContext(), usuario -> {
+                                                    if (usuario != null) {
+                                                       usuarioLogeado = usuario;
+                                                        FireStorageController.descargarImagen(getContext(), usuarioLogeado.getUrlImagenPerfil(), bitmap -> {
+                                                            if (bitmap != null) {
 
-                                                            FireStorageController.descargarImagen(getContext(), usuarioLogeado.getUrlImagenPerfil(), bitmap -> {
-                                                                if (bitmap != null) {
-                                                                    // Aquí es donde debes establecer la imagen en el ImageView
+                                                                progressBar2.setVisibility(View.GONE);
+                                                                imageViewPerfilUsuario.setImageBitmap(bitmap);
+                                                                imageViewPerfilUsuario.setVisibility(View.VISIBLE);
 
-                                                                    progressBar2.setVisibility(View.GONE);
-                                                                    imageViewPerfilUsuario.setImageBitmap(bitmap);
-                                                                    imageViewPerfilUsuario.setVisibility(View.VISIBLE);
+                                                            }
+                                                        });
+                                                        cargarDatosActualPerfil();
+                                                    } else
+                                                        Log.e(FragmentManager.TAG, "El objeto Usuario es null");
+                                                });
+                                            }
+                                            @Override
+                                            public void imagenFalloSubida() {
 
-                                                                } else {
-                                                                    // Maneja el caso en que la descarga falla o no hay imagen
-                                                                    // Podrías mostrar una imagen predeterminada o hacer otra acción aquí
-                                                                }
-                                                            });
-                                                            cargarDatosActualPerfil();
-                                                        } else
-                                                            Log.e(FragmentManager.TAG, "El objeto Usuario es null");
-                                                    });
-                                                }
-
-                                                @Override
-                                                public void imagenFalloSubida() {
-
-                                                }
-                                            });
-
-                                    //Ahora tendriamos que volver a cargar los datos del usuario.
-                                }
+                                            }
+                                        });
                             });
 
-
-
-
-                }else
-                //Existe el usuario, no podemos actualizar los datos
-                    mostrarMensajeAlerta("El e-mail ya existe, no puedes utilizar un e-mail existente.");
             }else
                 mostrarMensajeAlerta("El email o contraseña tiene que contener los requisitos mínimos.");
         else
             mostrarMensajeAlerta("No puede haber ningun campo vacío,rellena todos los campos.");
     }
-/*
-    private void loadFragment() {
-        fragment = new SettingsFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainerView, fragment)
-                .commit();
-    }
-*/
+
     private void mostrarMensajeAlerta(String mensaje) {
         textViewMensajeAlerta.setText(mensaje);
     }
 
-
+    /**
+     * Metodo utilizado para cargar los datos de nuestro usuario de firebase, para luego setear sus datos.
+     */
 
     @SuppressLint("RestrictedApi")
     private void cargarDatosUsuarioFirebase(View view) {
         FirebaseDataBaseHelper firebaseDataBaseHelper = new FirebaseDataBaseHelper();
         firebaseDataBaseHelper.cargarDatosUsuarioFirebaseHelper( getContext(), usuario -> {
             if (usuario != null) {
-                // Usa el objeto Usuario aquí
-                //Realizamos desde aqui los metodos porque nos aseguramso que el usuario se a cargado de la base de datos
+
                 usuarioLogeado = usuario;
                 progressBar.setVisibility(View.GONE);
                 cargarImagenActualPerfil(view);
@@ -251,6 +234,9 @@ public class SettingsFragment extends Fragment {
         });
     }
 
+    /**
+     * Metodo que utiliza la clase controladora FireStorageController y su interfaz para descargar una imagen de perfil del usuario y una vez descargada añadirsela.
+     */
     private void cargarImagenActualPerfil(View view) {
 
         FireStorageController.descargarImagen(getContext(), usuarioLogeado.getUrlImagenPerfil(), bitmap -> {
@@ -260,10 +246,6 @@ public class SettingsFragment extends Fragment {
 
                     imageViewPerfilUsuario.setImageBitmap(bitmap);
                     imageViewPerfilUsuario.setVisibility(View.VISIBLE);
-
-            } else {
-                // Maneja el caso en que la descarga falla o no hay imagen
-                // Podrías mostrar una imagen predeterminada o hacer otra acción aquí
             }
         });
     }

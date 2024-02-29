@@ -56,13 +56,17 @@ public class SignUp extends AppCompatActivity {
         botonEnviar.setOnClickListener(this::enviarFormulario);
         botonVolverInicioSesion.setOnClickListener(this::cargarActivityInicioSesion);
     }
-
+    /**
+     * Con esta función recogemos los datos del formulario de registro y verificamos que los input sean correctos(mediante la clase de apoyo
+     * EmailController y PasswordController. una vez verificado que el e-mail y contraseña cumple con los requisitos obligatorios, procedemos
+     * a registrar nuestro usuario.
+     */
     private void enviarFormulario(View v) {
         String nombreUsuario = editTextNombreUsuario.getText().toString();
         String emailUsuario = editTextEmailUsuario.getText().toString();
         String passwordUsuario = editTextPasswordUsuario.getText().toString();
 
-        //Accedemos a los metodos de las clases de manera estatica.
+
         if (!nombreUsuario.isEmpty() &&
                 EmailController.comprobarEmail(emailUsuario) &&
                 PasswordController.comprobarPassword(passwordUsuario)) {
@@ -74,7 +78,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     /**
-     *
+     *Con esta funcion nos apoyamos para realizar el proceso de registro de nuevo usuario, utilizando la clase DBController.
      * @param nombreUsuario
      * @param emailUsuario
      * @param passwordUsuario
@@ -95,7 +99,9 @@ public class SignUp extends AppCompatActivity {
     private void mostrarMensajeAlerta(String mensaje) {
         textViewMensajeAlertaRegistro.setText(mensaje);
     }
-
+    /**
+     * Con esta función cargamos el Activity inicio sesion.
+     */
     public void cargarActivityInicioSesion(View view) {
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(this, SignIn.class);

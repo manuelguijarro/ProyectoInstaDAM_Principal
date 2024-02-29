@@ -20,11 +20,15 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Esta clase es utilizada de apoyo para descargar multiples imagenes desde firestorage,
+ * nosotros le pasariamos una lista con las url(end point de nuestra ruta de firestorage)
+ * y se descargarian una a una mediante un bucle, para luego añadirlas a una lista de bitmaps
+ * y poder setearlas correctamente.
+ */
 public class FirebaseManager {
-    public interface respuestaSubirImagenListener {
-        void onSuccess();
-        void onFailure();
-    }
+
 
     private static final String TAG = "FirebaseManager";
 
@@ -34,8 +38,11 @@ public class FirebaseManager {
     }
 
 
-
-
+    /**
+     *
+     *Metodo que utilizamos de manera estatica para descargar las imagenes de nuestra aplicacion, este metodo es para descargar una lista de url, para descargar
+     * de 1 en 1, tenemos otro metodo.
+     */
     public static void downloadImages(Context context, List<String> imageUrls, OnImagesDownloadListener listener) {
         List<Bitmap> bitmaps = new ArrayList<>();
 
@@ -45,27 +52,21 @@ public class FirebaseManager {
             StorageReference storageRef = storage.getReference().child("imagenes").child(imageUrl);
             final long BYTES = 10 * (1024 * 1024);
 
-            storageRef.getBytes(BYTES).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    bitmaps.add(bitmap);
+            storageRef.getBytes(BYTES).addOnSuccessListener(bytes -> {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                bitmaps.add(bitmap);
 
-                    // Verificar si hemos descargado todas las imágenes
-                    if (bitmaps.size() == imageUrls.size()) {
-                        listener.onImagesDownloaded(bitmaps);
-                    }
+                // Verificar si hemos descargado todas las imágenes
+                if (bitmaps.size() == imageUrls.size()) {
+                    listener.onImagesDownloaded(bitmaps);
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(context, "Error al descargar una imagen", Toast.LENGTH_SHORT).show();
+            }).addOnFailureListener(e -> {
+                Toast.makeText(context, "Error al descargar una imagen", Toast.LENGTH_SHORT).show();
 
-                    // Si falla la descarga de una imagen, simplemente omitimos esa imagen
-                    // Verificar si hemos descargado todas las imágenes
-                    if (bitmaps.size() == imageUrls.size()) {
-                        listener.onImagesDownloaded(bitmaps);
-                    }
+                // Si falla la descarga de una imagen, simplemente omitimos esa imagen
+                // Verificar si hemos descargado todas las imágenes
+                if (bitmaps.size() == imageUrls.size()) {
+                    listener.onImagesDownloaded(bitmaps);
                 }
             });
         }

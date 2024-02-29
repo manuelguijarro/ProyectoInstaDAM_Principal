@@ -4,12 +4,16 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_main.xml"
+    },
+    {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_activity_sign_in.xml.flat",
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_sign_in.xml"
     },
     {
-        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\drawable_baseline_person_244.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\baseline_person_244.xml"
     },
     {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -52,6 +56,10 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\logo_settings.xml"
     },
     {
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_item_publicaciones.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\item_publicaciones.xml"
+    },
+    {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\mipmap-hdpi\\ic_launcher.webp"
     },
@@ -80,12 +88,12 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\activity_sign_up.xml"
     },
     {
-        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\drawable_baseline_person_24.xml.flat",
-        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\baseline_person_24.xml"
-    },
-    {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\drawable_linear_top.xml.flat",
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\linear_top.xml"
+    },
+    {
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\drawable_baseline_person_24.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\baseline_person_24.xml"
     },
     {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_imagen_item.xml.flat",
@@ -100,6 +108,10 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\logo_add_post.xml"
     },
     {
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\drawable_linear_bottom.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\drawable\\linear_bottom.xml"
+    },
+    {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_fragment_home.xml.flat",
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\fragment_home.xml"
     },
@@ -112,16 +124,16 @@
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\menu\\bottom_menu.xml"
     },
     {
-        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_fragment_post.xml.flat",
-        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\fragment_post.xml"
-    },
-    {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.instadamfinal.app-merged_res-47:/layout_fragment_settings.xml.flat",
-        "source": "com.example.instadamfinal.app-main-49:/layout/fragment_settings.xml"
+        "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\layout_fragment_post.xml.flat",
+        "source": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-main-49:\\layout\\fragment_post.xml"
+    },
+    {
+        "merged": "com.example.instadamfinal.app-merged_res-47:/layout_activity_main.xml.flat",
+        "source": "com.example.instadamfinal.app-main-49:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Romero\\.gradle\\daemon\\8.0\\com.example.instadamfinal.app-merged_res-47:\\mipmap-mdpi_ic_launcher.webp.flat",

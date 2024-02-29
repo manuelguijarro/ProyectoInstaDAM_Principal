@@ -3034,6 +3034,7 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable baseline_person_24
+drawable baseline_person_244
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3082,6 +3083,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable linear_bottom
 drawable linear_top
 drawable logo_add_post
 drawable logo_busqueda
@@ -3253,6 +3255,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id autorPublicacion
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3314,6 +3317,7 @@ id decor_content_parent
 id default_activity_button
 id deltaRelative
 id dependency_ordering
+id descripcionPublicacion
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -3345,7 +3349,6 @@ id editTextEmailAddress
 id editTextPassword
 id editTextTextEmailUsuario
 id editTextTextMultiLineDescripcionPublicacion
-id editTextTextPassword2
 id editTextTextTituloPublicacion
 id editTextUserName
 id edit_query
@@ -3397,10 +3400,10 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageView
 id imageView2
 id imageViewPerfilUsuario
 id imageViewSubirImagenSubirPost
+id imagenPublicacion
 id immediateStop
 id included
 id indeterminate
@@ -3422,6 +3425,7 @@ id line3
 id linear
 id listMode
 id list_item
+id lista_publicaciones
 id locale
 id logoInstaDam
 id ltr
@@ -3549,6 +3553,8 @@ id progressBar
 id progressBar2
 id progressBar3
 id progressBar4
+id progressBar6
+id progressBar7
 id progress_circular
 id progress_horizontal
 id radio
@@ -3655,10 +3661,10 @@ id textView10
 id textView11
 id textView12
 id textView13
-id textView14
 id textView15
 id textView2
 id textView3
+id textView4
 id textView5
 id textView6
 id textView7
@@ -3681,8 +3687,8 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id tituloPublicacion
 id toggle
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -3859,6 +3865,7 @@ layout fragment_perfil
 layout fragment_post
 layout fragment_settings
 layout imagen_item
+layout item_publicaciones
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

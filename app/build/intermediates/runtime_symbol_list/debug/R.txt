@@ -3033,6 +3033,7 @@ int drawable abc_vector_test 0x7f070077
 int drawable avd_hide_password 0x7f070078
 int drawable avd_show_password 0x7f070079
 int drawable baseline_person_24 0x7f0700fb
+int drawable baseline_person_244 0x7f0700fc
 int drawable btn_checkbox_checked_mtrl 0x7f07007a
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07007b
 int drawable btn_checkbox_unchecked_mtrl 0x7f07007c
@@ -3081,6 +3082,7 @@ int drawable ic_mtrl_chip_checked_black 0x7f0700a6
 int drawable ic_mtrl_chip_checked_circle 0x7f0700a7
 int drawable ic_mtrl_chip_close_circle 0x7f0700a8
 int drawable ic_search_black_24 0x7f0700a9
+int drawable linear_bottom 0x7f0700fd
 int drawable linear_top 0x7f0700aa
 int drawable logo_add_post 0x7f0700ab
 int drawable logo_busqueda 0x7f0700ac
@@ -3252,6 +3254,7 @@ int id auto 0x7f080056
 int id autoComplete 0x7f080057
 int id autoCompleteToEnd 0x7f080058
 int id autoCompleteToStart 0x7f080059
+int id autorPublicacion 0x7f08022e
 int id barrier 0x7f08005a
 int id baseline 0x7f08005b
 int id beginOnFirstDraw 0x7f08005c
@@ -3313,6 +3316,7 @@ int id decor_content_parent 0x7f080093
 int id default_activity_button 0x7f080094
 int id deltaRelative 0x7f080095
 int id dependency_ordering 0x7f080096
+int id descripcionPublicacion 0x7f08022f
 int id design_bottom_sheet 0x7f080097
 int id design_menu_item_action_area 0x7f080098
 int id design_menu_item_action_area_stub 0x7f080099
@@ -3344,7 +3348,6 @@ int id editTextEmailAddress 0x7f0800b2
 int id editTextPassword 0x7f0800b3
 int id editTextTextEmailUsuario 0x7f0800b4
 int id editTextTextMultiLineDescripcionPublicacion 0x7f080227
-int id editTextTextPassword2 0x7f0800b6
 int id editTextTextTituloPublicacion 0x7f080228
 int id editTextUserName 0x7f0800b7
 int id edit_query 0x7f0800b8
@@ -3396,10 +3399,10 @@ int id ifRoom 0x7f0800e5
 int id ignore 0x7f0800e6
 int id ignoreRequest 0x7f0800e7
 int id image 0x7f0800e8
-int id imageView 0x7f0800e9
 int id imageView2 0x7f080225
 int id imageViewPerfilUsuario 0x7f0800ea
 int id imageViewSubirImagenSubirPost 0x7f080229
+int id imagenPublicacion 0x7f080230
 int id immediateStop 0x7f0800ec
 int id included 0x7f0800ed
 int id indeterminate 0x7f0800ee
@@ -3421,6 +3424,7 @@ int id line3 0x7f0800fd
 int id linear 0x7f0800fe
 int id listMode 0x7f0800ff
 int id list_item 0x7f080100
+int id lista_publicaciones 0x7f080231
 int id locale 0x7f080101
 int id logoInstaDam 0x7f080102
 int id ltr 0x7f080103
@@ -3548,6 +3552,8 @@ int id progressBar 0x7f08022a
 int id progressBar2 0x7f08022b
 int id progressBar3 0x7f08022c
 int id progressBar4 0x7f08022d
+int id progressBar6 0x7f080233
+int id progressBar7 0x7f080235
 int id progress_circular 0x7f08017c
 int id progress_horizontal 0x7f08017d
 int id radio 0x7f08017e
@@ -3654,10 +3660,10 @@ int id textView10 0x7f0801e2
 int id textView11 0x7f0801e3
 int id textView12 0x7f0801e4
 int id textView13 0x7f0801e5
-int id textView14 0x7f0801e6
 int id textView15 0x7f0801e7
 int id textView2 0x7f0801e8
 int id textView3 0x7f0801e9
+int id textView4 0x7f080234
 int id textView5 0x7f0801ea
 int id textView6 0x7f0801eb
 int id textView7 0x7f0801ec
@@ -3680,8 +3686,8 @@ int id time 0x7f0801fc
 int id title 0x7f0801fd
 int id titleDividerNoCustom 0x7f0801fe
 int id title_template 0x7f0801ff
+int id tituloPublicacion 0x7f080232
 int id toggle 0x7f080200
-int id toolbar 0x7f080201
 int id top 0x7f080202
 int id topPanel 0x7f080203
 int id touch_outside 0x7f080204
@@ -3858,6 +3864,7 @@ int layout fragment_perfil 0x7f0b0031
 int layout fragment_post 0x7f0b0032
 int layout fragment_settings 0x7f0b0033
 int layout imagen_item 0x7f0b0071
+int layout item_publicaciones 0x7f0b0072
 int layout m3_alert_dialog 0x7f0b0034
 int layout m3_alert_dialog_actions 0x7f0b0035
 int layout m3_alert_dialog_title 0x7f0b0036
