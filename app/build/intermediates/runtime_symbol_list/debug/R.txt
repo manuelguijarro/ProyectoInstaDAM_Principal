@@ -3931,6 +3931,15 @@ int mipmap ic_launcher 0x7f0e0000
 int mipmap ic_launcher_round 0x7f0e0001
 int plurals mtrl_badge_content_description 0x7f0f0000
 int raw firebase_common_keep 0x7f100000
+int string Datos_actualizar 0x7f1100c9
+int string Descripcion_publicacion 0x7f1100ca
+int string Email_usuario_actual 0x7f1100cb
+int string Imagen_perfil 0x7f1100cc
+int string Nombre_usuario_actual 0x7f1100cd
+int string Nuevo_email_usuario 0x7f1100ce
+int string Nuevo_nombre_usuario 0x7f1100cf
+int string Subir_publicacion 0x7f1100d0
+int string Titulo_publicacion 0x7f1100d1
 int string abc_action_bar_home_description 0x7f110000
 int string abc_action_bar_up_description 0x7f110001
 int string abc_action_menu_overflow_description 0x7f110002
@@ -4114,6 +4123,8 @@ int string mtrl_timepicker_cancel 0x7f1100b3
 int string mtrl_timepicker_confirm 0x7f1100b4
 int string nav_app_bar_navigate_up_description 0x7f1100b5
 int string nav_app_bar_open_drawer_description 0x7f1100b6
+int string nombre_usuario 0x7f1100d2
+int string nueva_imagen_perfil 0x7f1100d3
 int string password_toggle_content_description 0x7f1100b7
 int string path_password_eye 0x7f1100b8
 int string path_password_eye_mask_strike_through 0x7f1100b9

@@ -80,6 +80,15 @@ layout item_publicaciones
 menu bottom_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+string Datos_actualizar
+string Descripcion_publicacion
+string Email_usuario_actual
+string Imagen_perfil
+string Nombre_usuario_actual
+string Nuevo_email_usuario
+string Nuevo_nombre_usuario
+string Subir_publicacion
+string Titulo_publicacion
 string app_name
 string app_name_dam
 string cargar_imagen
@@ -95,6 +104,8 @@ string hello_blank_fragment
 string introduce_contrasenia
 string introduce_email
 string introduce_userName
+string nombre_usuario
+string nueva_imagen_perfil
 string project_id
 string registro_button
 string subir_imagen

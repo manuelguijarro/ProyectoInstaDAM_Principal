@@ -3932,6 +3932,15 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw firebase_common_keep
+string Datos_actualizar
+string Descripcion_publicacion
+string Email_usuario_actual
+string Imagen_perfil
+string Nombre_usuario_actual
+string Nuevo_email_usuario
+string Nuevo_nombre_usuario
+string Subir_publicacion
+string Titulo_publicacion
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -4115,6 +4124,8 @@ string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string nombre_usuario
+string nueva_imagen_perfil
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
